@@ -15,8 +15,8 @@ public class PlayerCamera : MonoBehaviour
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
     }
 
     private void Update()
@@ -26,7 +26,7 @@ public class PlayerCamera : MonoBehaviour
 
         yRotation += mouseX;
         xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -80f, 80f);
+        xRotation = Mathf.Clamp(xRotation, -50f, 50f);
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         Orientation.rotation = Quaternion.Euler(0, yRotation, 0);
     }

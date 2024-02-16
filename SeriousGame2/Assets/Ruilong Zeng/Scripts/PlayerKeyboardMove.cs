@@ -8,11 +8,10 @@ public class PlayerKeyboardMove : MonoBehaviour
     public float Movespeed;
     public float GroundDrag;
 
-    [Header("Ground Check")] 
-    public float playerHight;
+    [Header("Ground Check")] public float playerHight;
     public LayerMask WhatIsground;
     private bool Isgroung;
-    
+
     public Transform orientation;
     private float horizontaInput;
     private float verticalInput;
@@ -39,30 +38,26 @@ public class PlayerKeyboardMove : MonoBehaviour
             rb.drag = 0;
         }
     }
-
     private void FixedUpdate()
     {
         Moveplayer();
     }
-
     private void MyInput()
     {
         horizontaInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
     }
-
     private void Moveplayer()
     {
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontaInput;
 
         rb.AddForce(Movespeed * moveDirection.normalized * 10f, ForceMode.Force);
     }
-
     private void SpeedControl()
     {
         Vector3 flatV = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        if (flatV.magnitude>Movespeed)
+        if (flatV.magnitude > Movespeed)
         {
             Vector3 LimitedVel = flatV.normalized * Movespeed;
             rb.velocity = new Vector3(LimitedVel.x, rb.velocity.y, LimitedVel.z);
