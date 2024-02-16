@@ -5,47 +5,67 @@ using UnityEngine;
 
 public class PlayerKeyboardMove : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public float rotationSpeed = 500f;
-    private Animator animator;
+    public float Movespeed;
+    public float GroundDrag;
 
-    private bool isMoving = false;
+    [Header("Ground Check")] 
+    public float playerHight;
+    public LayerMask WhatIsground;
+    private bool Isgroung;
+    
+    public Transform orientation;
+    private float horizontaInput;
+    private float verticalInput;
+    private Vector3 moveDirection;
+    private Rigidbody rb;
 
-    private void Awake()
+    private void Start()
     {
-        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
     }
 
     private void Update()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-
-        // 计算移动方向
-        Vector3 moveDirection = new Vector3(horizontalInput, 0, verticalInput).normalized;
-
-        // 移动
-        transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.World);
-
-        // 如果有移动输入，进行转向，并触发Run动画
-        if (moveDirection != Vector3.zero)
+        MyInput();
+        SpeedControl();
+        Isgroung = Physics.Raycast(transform.position, Vector3.down, playerHight * 0.5f + 0.2f, WhatIsground);
+        if (Isgroung)
         {
-            RotateTowardsMoveDirection(moveDirection);
-            isMoving = true;
+            rb.drag = GroundDrag;
         }
         else
         {
-            isMoving = false;
+            rb.drag = 0;
         }
-
-        // 更新动画状态
-        animator.SetBool("Run", isMoving);
     }
 
-    // 使角色转向移动方向
-    private void RotateTowardsMoveDirection(Vector3 moveDirection)
+    private void FixedUpdate()
     {
-        Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        Moveplayer();
+    }
+
+    private void MyInput()
+    {
+        horizontaInput = Input.GetAxisRaw("Horizontal");
+        verticalInput = Input.GetAxisRaw("Vertical");
+    }
+
+    private void Moveplayer()
+    {
+        moveDirection = orientation.forward * verticalInput + orientation.right * horizontaInput;
+
+        rb.AddForce(Movespeed * moveDirection.normalized * 10f, ForceMode.Force);
+    }
+
+    private void SpeedControl()
+    {
+        Vector3 flatV = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
+        if (flatV.magnitude>Movespeed)
+        {
+            Vector3 LimitedVel = flatV.normalized * Movespeed;
+            rb.velocity = new Vector3(LimitedVel.x, rb.velocity.y, LimitedVel.z);
+        }
     }
 }
