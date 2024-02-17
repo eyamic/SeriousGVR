@@ -8,7 +8,8 @@ public class PlayerKeyboardMove : MonoBehaviour
     public float Movespeed;
     public float GroundDrag;
 
-    [Header("Ground Check")] public float playerHight;
+    [Header("Ground Check")] 
+    public float playerHight;
     public LayerMask WhatIsground;
     private bool Isgroung;
 

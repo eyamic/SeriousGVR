@@ -4,7 +4,7 @@ using UnityEngine;
 
 [ExecuteInEditMode]
 [AddComponentMenu("Custom/Camera")]
-public class Camera : MonoBehaviour
+public class CameraXuanru : MonoBehaviour
 {
     #region Variables
     public Shader SCShader;

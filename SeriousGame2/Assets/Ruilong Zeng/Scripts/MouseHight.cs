@@ -2,15 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class MouseHight : MonoBehaviour
 {
+    public RectTransform uiTansform;
     private GameObject highlightedObject;
     private void Update()
     {
         RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
+        Ray ray = UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition);
+        
         if (Physics.Raycast(ray, out hit))
         {
             GameObject hitObject = hit.collider.gameObject;
@@ -25,18 +26,21 @@ public class MouseHight : MonoBehaviour
                     ClearHighlight();
                     highlightedObject = hitObject;
                     outlineComponent.enabled = true;
+                    uiTansform.gameObject.SetActive(true);
                 }
             }
             else
             {
                 // 如果物体上没有 Outline 组件，则清除高亮
                 ClearHighlight();
+                uiTansform.gameObject.SetActive(false);
             }
         }
         else
         {
             // 如果没有命中任何物体，则清除高亮
             ClearHighlight();
+            uiTansform.gameObject.SetActive(false);
         }
     }
 
