@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MouseHight : MonoBehaviour
 {
     public RectTransform uiTansform;
+    public RectTransform GuaizhangTansform;
     private GameObject highlightedObject;
     private void Update()
     {
@@ -26,6 +27,7 @@ public class MouseHight : MonoBehaviour
                     ClearHighlight();
                     highlightedObject = hitObject;
                     outlineComponent.enabled = true;
+                    
                     uiTansform.gameObject.SetActive(true);
                 }
             }
@@ -33,6 +35,7 @@ public class MouseHight : MonoBehaviour
             {
                 // 如果物体上没有 Outline 组件，则清除高亮
                 ClearHighlight();
+                
                 uiTansform.gameObject.SetActive(false);
             }
         }

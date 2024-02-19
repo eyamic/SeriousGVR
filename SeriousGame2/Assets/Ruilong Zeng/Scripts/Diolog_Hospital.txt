@@ -1,0 +1,6 @@
+Doctor
+Hi, you wake up!
+Me
+Where am i?
+Doctor
+This is hospital!
