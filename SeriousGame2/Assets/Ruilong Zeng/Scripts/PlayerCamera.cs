@@ -9,25 +9,41 @@ public class PlayerCamera : MonoBehaviour
     public float SensY = 400;
 
     public Transform Orientation;
+    public Transform playerTransform;
 
-    float xRotation;
-    float yRotation;
-
-    private void Start()
-    {
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
-    }
-
+    private float LockXRotaion = 14f;
+    private float xRotation;
+    private float yRotation;
+    
+    public bool canRotate = true;
+    public bool canMoveDown = true;
     private void Update()
     {
         float mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * SensX;
         float mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * SensY;
 
         yRotation += mouseX;
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -20f, 80f);
+        if (canMoveDown)
+        {
+            xRotation -= mouseY;
+            xRotation = Mathf.Clamp(xRotation, -5f, 20f);
+        }
+        else
+        {
+            xRotation = LockXRotaion;
+        }
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         Orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+        
+        playerTransform.rotation=Quaternion.Euler(0,yRotation,0);
+    }
+    public void SetRotationEnabled(bool enabled)
+    {
+        canRotate = enabled;
+    }
+
+    public void SetMoveUpDownEnabled(bool enabled)
+    {
+        canMoveDown = enabled;
     }
 }
