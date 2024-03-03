@@ -12,12 +12,14 @@ public class MouseHight : MonoBehaviour
 
     [Header("Interaction Part")] public Transform handTransform;
     public PlayerCamera playerCamera;
-    
+    public GameObject ClickEffect;
+    public GameObject ClickEffect2;
 
     private GameObject highlightedObject;
     private bool canRotateVertically = true;
 
-   
+    private bool haveItem;
+
 
     private void Update()
     {
@@ -40,7 +42,7 @@ public class MouseHight : MonoBehaviour
                     highlightedObject = hitObject;
                     outlineComponent.enabled = true;
 
-                    uiTansform.gameObject.SetActive(true);
+                    //uiTansform.gameObject.SetActive(true);
                 }
 
                 if (hitObject.CompareTag("CanPickup"))
@@ -64,7 +66,7 @@ public class MouseHight : MonoBehaviour
                 // 如果物体上没有 Outline 组件，则清除高亮
                 ClearHighlight();
 
-                uiTansform.gameObject.SetActive(false);
+               // uiTansform.gameObject.SetActive(false);
             }
         }
         else
@@ -73,7 +75,25 @@ public class MouseHight : MonoBehaviour
             ClearHighlight();
             uiTansform.gameObject.SetActive(false);
         }
-        
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (haveItem)
+            {
+                // 获取点击位置
+                RaycastHit floorHit;
+                if (Physics.Raycast(ray, out floorHit))
+                {
+                    if (floorHit.collider.CompareTag("Floor"))
+                    {
+                        // 触发粒子效果
+                        ClickEffectControl(floorHit.point);
+                    }else if (floorHit.collider.CompareTag("Dangerous"))
+                    {
+                        ClickEffectControl2(floorHit.point);
+                    }
+                }
+            }
+        }
     }
 
     void Close()
@@ -88,11 +108,28 @@ public class MouseHight : MonoBehaviour
         {
             itemCollider.enabled = false;
         }
-        playerCamera.SetMoveUpDownEnabled(false);
+
 
         gamobject.transform.position = handTransform.position;
         gamobject.transform.rotation = handTransform.rotation;
         gamobject.gameObject.transform.SetParent(handTransform);
+        haveItem = true;
+        
+        playerCamera.SetMoveUpDownEnabled(false);
+    }
+
+    private void ClickEffectControl(Vector3 position)
+    {
+        // 产生粒子效果
+        GameObject ripple = Instantiate(ClickEffect, position, Quaternion.identity);
+        // 设置粒子效果销毁时间
+        Destroy(ripple, 1.5f);
+    }
+
+    private void ClickEffectControl2(Vector3 position)
+    {
+        GameObject ripper2 = Instantiate(ClickEffect2, position, Quaternion.identity);
+        Destroy(ripper2,1.5f);
     }
 
     private void ClearHighlight()
