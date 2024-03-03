@@ -7,39 +7,52 @@ using UnityEngine.AI;
 using BehaviorDesigner.Runtime.Tasks;
 public class EnemySight : Conditional
 {
-    // Declare delegate events for attack state changes
-    public delegate void AttackStateChanged(bool isAttacking);
-    public static event AttackStateChanged OnAttackStateChanged;
+    // Declare delegate events for talk state changes
+    public delegate void TalkStateChanged(bool isTalking);
+    public static event TalkStateChanged OnTalkStateChanged;
+
     private Animator anim;
-    private GameObject Player;
-   // private float distance;
+    private GameObject player;
     private NavMeshAgent nma;
+
+    // Define a variable to control if the enemy is talking
+    private bool isTalking = false;
+
     public override void OnStart()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
         anim = GetComponent<Animator>();
         nma = GetComponent<NavMeshAgent>();
     }
 
     public override TaskStatus OnUpdate()
     {
-        // Determine if you're in range
-        bool isAttacking = (transform.position - Player.transform.position).magnitude < 20;
-        //If in range
-        if (isAttacking)
-        {   //Disable NavMeshAgent
+        // Determine if the player is in range
+        bool isInRange = (transform.position - player.transform.position).magnitude < 20;
+
+        // If the player is in range
+        if (isInRange)
+        {
+            // Disable NavMeshAgent
             nma.enabled = false;
-            //Set the Boolean variable for the attack animation to false
-            anim.SetBool("isAttack",true);
+            // Set the boolean variable for the talk animation to true
+            anim.SetBool("IsWalk", false);
+            anim.SetBool("Istalk", true);
+       
+            isTalking = true;
         }
         else
         {
             nma.enabled = true;
-            anim.SetBool("isAttack",false);
+            anim.SetBool("Istalk", false);
+            anim.SetBool("IsWalk", true);
+            isTalking = false;
         }
-        //Trigger an attack state change event
-        OnAttackStateChanged?.Invoke(isAttacking);
-        //Return to mission status, success for entering attack range, failure otherwise.
-        return isAttacking ? TaskStatus.Success : TaskStatus.Failure;
+
+        // Trigger a talk state change event
+        OnTalkStateChanged?.Invoke(isTalking);
+
+        // Return to mission status, success for being in talk range, failure otherwise.
+        return isTalking ? TaskStatus.Success : TaskStatus.Failure;
     }
 }
