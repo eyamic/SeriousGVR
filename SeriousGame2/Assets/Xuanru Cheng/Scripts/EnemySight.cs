@@ -28,7 +28,7 @@ public class EnemySight : Conditional
     public override TaskStatus OnUpdate()
     {
         // Determine if the player is in range
-        bool isInRange = (transform.position - player.transform.position).magnitude < 20;
+        bool isInRange = (transform.position - player.transform.position).magnitude < 5;
 
         // If the player is in range
         if (isInRange)
@@ -36,7 +36,7 @@ public class EnemySight : Conditional
             // Disable NavMeshAgent
             nma.enabled = false;
             // Set the boolean variable for the talk animation to true
-            anim.SetBool("IsWalk", false);
+          
             anim.SetBool("Istalk", true);
        
             isTalking = true;
@@ -45,7 +45,7 @@ public class EnemySight : Conditional
         {
             nma.enabled = true;
             anim.SetBool("Istalk", false);
-            anim.SetBool("IsWalk", true);
+         
             isTalking = false;
         }
 

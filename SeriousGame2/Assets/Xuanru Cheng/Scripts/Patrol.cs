@@ -70,7 +70,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
                 }
             }
             bool isMoving = navMeshAgent.velocity.magnitude > 0.1f;
-            anim.SetBool("isWalk", isMoving);
+            anim.SetBool("IsWalk", isMoving);
             return TaskStatus.Running;
         }
 
