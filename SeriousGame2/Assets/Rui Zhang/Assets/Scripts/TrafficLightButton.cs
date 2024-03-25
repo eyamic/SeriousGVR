@@ -21,7 +21,7 @@ public class TrafficLightButton : MonoBehaviour
 
     private void Update()
     {
-        if (playerInTriffic && Input.GetKeyDown(KeyCode.E))
+        if (playerInTriffic == true && Input.GetKeyDown(KeyCode.E))
         {
             //Invoke("PlayDelayerSound", 5f);
             Debug.Log("PlaySound");

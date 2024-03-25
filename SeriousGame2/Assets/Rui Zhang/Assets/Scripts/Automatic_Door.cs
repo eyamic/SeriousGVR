@@ -6,28 +6,40 @@ public class Automatic_Door : MonoBehaviour
 {
     private Animator anim;
 
-    private bool isOpen = false;//门的状态
+    private bool playerAutomaticDoor = false;
+
+    private bool isOpen = false;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            Debug.Log("inRange");
+            playerAutomaticDoor = true;
+        }
+        
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (playerAutomaticDoor == true )
         {
-            if (!isOpen)//门是关的
+            if (!isOpen)
             {
                 anim.SetTrigger("AutomaticOpen");
-                isOpen = true;//设为“打开的门”
+                isOpen = true;
             }
-            else//门是开的
-            {
-                anim.SetTrigger("AutomaticClose");
-                isOpen = false;//设为“关上的门”
-            }
+            // else if (playerAutomaticDoor != true)
+            // {
+            //     anim.SetTrigger("AutomaticClose");
+            //     isOpen = false;
+            // }
         }
     }
     //private void OnTriggerStay
