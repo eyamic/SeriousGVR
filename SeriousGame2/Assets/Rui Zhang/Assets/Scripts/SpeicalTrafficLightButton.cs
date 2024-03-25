@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class TrafficLightButton : MonoBehaviour
+public class SpeicalTrafficLightButton : MonoBehaviour
 {
     // Start is called before the first frame update
     public TextMeshProUGUI displayText;
     public AudioSource trifficSound;
+    private int triggerTime = 0;
     private bool playerInTriffic = false;
     private void OnTriggerEnter(Collider other)
     {
@@ -23,8 +24,20 @@ public class TrafficLightButton : MonoBehaviour
     {
         if (playerInTriffic == true && Input.GetKeyDown(KeyCode.E))
         {
-            //Invoke("PlayDelayerSound", 5f);
-            Debug.Log("PlaySound");
+            triggerTime++;
+            if (triggerTime == 1)
+            {
+                Debug.Log("first");
+            }
+            else if (triggerTime == 2)
+            {
+                Debug.Log("second");
+            }
+            else if (triggerTime == 3)
+            {
+                //Invoke("PlayerDelaySound", 5.0f);
+                Debug.Log("PlaySound");
+            }
         }
     }
     private void PlayDelaySound()
