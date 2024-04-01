@@ -6,9 +6,10 @@ public class Automatic_Door : MonoBehaviour
 {
     private Animator anim;
 
-    private bool playerAutomaticDoor = false;
+    private bool inRange = false;
 
     private bool isOpen = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,44 +20,28 @@ public class Automatic_Door : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            Debug.Log("inRange");
-            playerAutomaticDoor = true;
+            
+            inRange = true;
         }
-        
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            inRange = false;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (playerAutomaticDoor == true )
+        if (inRange && isOpen == false)
         {
-            if (!isOpen)
-            {
-                anim.SetTrigger("AutomaticOpen");
-                isOpen = true;
-            }
-            // else if (playerAutomaticDoor != true)
-            // {
-            //     anim.SetTrigger("AutomaticClose");
-            //     isOpen = false;
-            // }
+            anim.SetTrigger("AutomaticOpen");
+            isOpen = true;
         }
     }
-    //private void OnTriggerStay
-    //{
-    //if(other.CompareTag("Player"))
-    // {
-    //isOpen = true;
-    // }
-
-    //private void OnTriggerExit
-    //{
-    //if(other.CompareTag("Player"))
-    //{
-    //isOpen = false;
-    //}    
-
-    //}
 
 
 }
