@@ -6,16 +6,21 @@ using TMPro;
 public class SpeicalTrafficLightButton : MonoBehaviour
 {
     // Start is called before the first frame update
-    public TextMeshProUGUI displayText;
+    public GameObject speiclTrafficLightPanel_1;
+    public GameObject speiclTrafficLightPanel_2;
+    public GameObject speiclTrafficLightPanel_3;
+    public GameObject hintPanel; 
     public AudioSource trifficSound;
     private int triggerTime = 0;
     private bool playerInTriffic = false;
+
+   
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             playerInTriffic = true;
-            //displayText.text = " Press E to active the Traffic Light";
             Debug.Log("Press E to active the Traffic Light");
         }
     }
@@ -27,23 +32,48 @@ public class SpeicalTrafficLightButton : MonoBehaviour
             triggerTime++;
             if (triggerTime == 1)
             {
-                Debug.Log("first");
+                speiclTrafficLightPanel_1.SetActive(true);
+                Invoke("ClosePanel", 2.0f);
+                Invoke("OpenHintPanel", 3f);
+                Invoke("ClosePanel", 4f);
+
+
             }
             else if (triggerTime == 2)
             {
-                Debug.Log("second");
+                speiclTrafficLightPanel_2.SetActive(true);
+                Invoke("ClosePanel", 2.0f);
+                Invoke("OpenHintPanel", 3f);
+                Invoke("ClosePanel", 4f);
             }
             else if (triggerTime == 3)
             {
-                //Invoke("PlayerDelaySound", 5.0f);
-                Debug.Log("PlaySound");
+                speiclTrafficLightPanel_3.SetActive(true);
+                Invoke("ClosePanel", 2.0f);
+                Invoke("PlayDelaySound", 2.5f);
             }
         }
     }
+
+    private void ClosePanel()
+    {
+        speiclTrafficLightPanel_1.SetActive(false);
+        speiclTrafficLightPanel_2.SetActive(false);
+        speiclTrafficLightPanel_3.SetActive(false);
+        hintPanel.SetActive(false);
+    }
+
+    private void OpenHintPanel()
+    {
+        hintPanel.SetActive(true);
+    }
+  
+
     private void PlayDelaySound()
     {
         trifficSound.Play();
     }
 
+   
     
 }

@@ -16,7 +16,6 @@ public class TakeTheBusToPark : MonoBehaviour
     {
         endPointRigidbody = endPoint.GetComponent<Rigidbody>();
         origianlScale = busPlayer.transform.localScale;
-
     }
     // Update is called once per frame
     void Update()
@@ -31,6 +30,11 @@ public class TakeTheBusToPark : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        if (Input.GetKeyDown("E"))
+        {
+            
+        }
+
         if (other.CompareTag("Player") && hasTrigger == false)
         {
             busMoving = true;
@@ -47,6 +51,7 @@ public class TakeTheBusToPark : MonoBehaviour
 
         }
     }
+
 
 
 
