@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 83fa2f4845755f542a8478152873d9e3
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _Coastlinemask: {fileID: 2800000, guid: abc146a77d7711b469ebe0be5bd1d685, type: 3}
+  - _FoamTex: {fileID: 2800000, guid: 17cd16fec4e38674489b6f75001e1219, type: 3}
+  - _MainTex: {fileID: 2800000, guid: 9e5a72ba0ce0a7e49b83f6ac7dfb52f9, type: 3}
+  - _WaveTex: {fileID: 2800000, guid: 1999f7251537230498563d6a5cd5071d, type: 3}
+  - _WaveMask: {fileID: 2800000, guid: c55de03bb9de790488438e9ccfe206cf, type: 3}
+  nonModifiableTextures: []
+  preprocessorOverride: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
