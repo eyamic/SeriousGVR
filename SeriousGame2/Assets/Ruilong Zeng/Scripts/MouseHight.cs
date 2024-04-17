@@ -66,7 +66,7 @@ public class MouseHight : MonoBehaviour
                 // 如果物体上没有 Outline 组件，则清除高亮
                 ClearHighlight();
 
-               // uiTansform.gameObject.SetActive(false);
+                // uiTansform.gameObject.SetActive(false);
             }
         }
         else
@@ -75,6 +75,7 @@ public class MouseHight : MonoBehaviour
             ClearHighlight();
             uiTansform.gameObject.SetActive(false);
         }
+
         if (Input.GetMouseButtonDown(0))
         {
             if (haveItem)
@@ -87,7 +88,8 @@ public class MouseHight : MonoBehaviour
                     {
                         // 触发粒子效果
                         ClickEffectControl(floorHit.point);
-                    }else if (floorHit.collider.CompareTag("Dangerous"))
+                    }
+                    else if (floorHit.collider.CompareTag("Dangerous"))
                     {
                         ClickEffectControl2(floorHit.point);
                     }
@@ -114,7 +116,7 @@ public class MouseHight : MonoBehaviour
         gamobject.transform.rotation = handTransform.rotation;
         gamobject.gameObject.transform.SetParent(handTransform);
         haveItem = true;
-        
+
         playerCamera.SetMoveUpDownEnabled(false);
     }
 
@@ -129,7 +131,7 @@ public class MouseHight : MonoBehaviour
     private void ClickEffectControl2(Vector3 position)
     {
         GameObject ripper2 = Instantiate(ClickEffect2, position, Quaternion.identity);
-        Destroy(ripper2,1.5f);
+        Destroy(ripper2, 1.5f);
     }
 
     private void ClearHighlight()
