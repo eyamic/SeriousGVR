@@ -11,49 +11,73 @@ public class TakeTheBusToPark : MonoBehaviour
     private bool busMoving = false;
     private bool hasTrigger = false;
     private Vector3 origianlScale;
-    // Start is called before the first frame update
+
+    public Collider talkArea;
+    private bool talkOver = false;
+    private int numOfTalk = 0;
     void Start()
     {
         endPointRigidbody = endPoint.GetComponent<Rigidbody>();
         origianlScale = busPlayer.transform.localScale;
     }
-    // Update is called once per frame
+
     void Update()
     {
         if (busMoving == true)
         {
-
             this.transform.Translate(Vector3.forward * busSpeed * Time.deltaTime);
             //busPlayer.transform.localPosition = new Vector3(0, 0, 0);
-
+        }
+        if (Input.GetKeyDown(KeyCode.E)&&talkArea)
+        {
+            numOfTalk++;
+            TalkToBus();
         }
     }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (Input.GetKeyDown("E"))
+        if (talkOver && other.CompareTag("Player") && hasTrigger == false)
         {
-            
-        }
-
-        if (other.CompareTag("Player") && hasTrigger == false)
-        {
-            busMoving = true;
-            busPlayer.transform.localScale = origianlScale;
-            busPlayer.transform.parent = transform;
-            hasTrigger = true;
+            StartBusMove();
         }
         else if (other.CompareTag("EndPoint"))
         {
-            busMoving = false;
-            origianlScale = busPlayer.transform.localScale;
-            busPlayer.transform.parent = null;
-            Destroy(endPointRigidbody);
-
+            StopBusMove();
         }
+
     }
 
+    public void StartBusMove()
+    {
+        busMoving = true;
+        busPlayer.transform.localScale = origianlScale;
+        busPlayer.transform.parent = transform;
+    }
 
+    public void StopBusMove()
+    {
+        busMoving = false;
+        origianlScale = busPlayer.transform.localScale;
+        busPlayer.transform.parent = null;
+        Destroy(endPointRigidbody);
+    }
 
+    public void TalkToBus()
+    {
+        if (numOfTalk == 1)
+        {
+            Debug.Log("1");
+        }
 
+        if (numOfTalk == 2)
+        {
+            Debug.Log("2");
+        }
 
+        if (numOfTalk ==3 )
+        {
+            talkOver = true;
+        }
+    }
 }
