@@ -18,6 +18,14 @@ public class MenuFuncation : MonoBehaviour
     public Button OptionButton;
 
 
+    private void Start()
+    {
+        if (Time.timeScale==0)
+        {
+            Time.timeScale = 1;
+        }
+    }
+
     private void Awake()
     {
         BacktomenuButton.onClick.AddListener(BacktoMenu);
@@ -30,6 +38,7 @@ public class MenuFuncation : MonoBehaviour
 
     void Option()
     {
+        Time.timeScale = 0;
         OptionMenuCanvans.SetActive(true);
         UICanvas.SetActive(false);
     }
