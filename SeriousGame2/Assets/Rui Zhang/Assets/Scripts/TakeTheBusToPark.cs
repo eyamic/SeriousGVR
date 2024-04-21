@@ -25,7 +25,7 @@ public class TakeTheBusToPark : MonoBehaviour
     {
         if (busMoving == true)
         {
-            this.transform.Translate(Vector3.forward * busSpeed * Time.deltaTime);
+            this.transform.Translate(Vector3.right* -busSpeed * Time.deltaTime);
             //busPlayer.transform.localPosition = new Vector3(0, 0, 0);
         }
         if (Input.GetKeyDown(KeyCode.E)&&talkArea)
