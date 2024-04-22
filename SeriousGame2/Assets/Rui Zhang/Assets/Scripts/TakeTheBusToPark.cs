@@ -15,10 +15,17 @@ public class TakeTheBusToPark : MonoBehaviour
     public Collider talkArea;
     private bool talkOver = false;
     private int numOfTalk = 0;
+
+    //private Collider myCollider;
+    //public Collider stopCollider;
+
+
     void Start()
     {
         endPointRigidbody = endPoint.GetComponent<Rigidbody>();
-        origianlScale = busPlayer.transform.localScale;
+        //origianlScale = busPlayer.transform.localScale;
+        //myCollider = GetComponent<Collider>();
+
     }
 
     void Update()
@@ -40,25 +47,29 @@ public class TakeTheBusToPark : MonoBehaviour
         if (talkOver && other.CompareTag("Player") && hasTrigger == false)
         {
             StartBusMove();
+            //myCollider.enabled = false;
+            //stopCollider.enabled = true;
         }
         else if (other.CompareTag("EndPoint"))
         {
             StopBusMove();
         }
 
+       
+
     }
 
     public void StartBusMove()
     {
         busMoving = true;
-        busPlayer.transform.localScale = origianlScale;
+        //busPlayer.transform.localScale = origianlScale;
         busPlayer.transform.parent = transform;
     }
 
     public void StopBusMove()
     {
         busMoving = false;
-        origianlScale = busPlayer.transform.localScale;
+       // origianlScale = busPlayer.transform.localScale;
         busPlayer.transform.parent = null;
         Destroy(endPointRigidbody);
     }
@@ -81,3 +92,4 @@ public class TakeTheBusToPark : MonoBehaviour
         }
     }
 }
+
