@@ -19,6 +19,12 @@ public class TakeTheBusToPark : MonoBehaviour
     private Collider myCollider;
     //public Collider stopCollider;
 
+    public AudioSource busArrive;
+    public AudioSource busInside;
+    public AudioSource busStart;
+    public AudioSource busPass;
+    public AudioSource busArrivePark;
+
 
     void Start()
     {
@@ -47,13 +53,17 @@ public class TakeTheBusToPark : MonoBehaviour
         if (talkOver && other.CompareTag("Player") && hasTrigger == false)
         {
             StartBusMove();
-            
+            busStart.Play();
+            busInside.PlayDelayed(0.5f);
             //stopCollider.enabled = true;
         }
         else if (other.CompareTag("EndPoint"))
         {
             StopBusMove();
             myCollider.enabled = false;
+            busInside.enabled = false;
+            busArrivePark.Play();
+
         }
 
        
@@ -77,14 +87,18 @@ public class TakeTheBusToPark : MonoBehaviour
 
     public void TalkToBus()
     {
+        busArrive.PlayDelayed(1.0f);
+
         if (numOfTalk == 1)
         {
             Debug.Log("1");
+            busPass.Play();
         }
 
         if (numOfTalk == 2)
         {
             Debug.Log("2");
+            busPass.Play();
         }
 
         if (numOfTalk ==3 )

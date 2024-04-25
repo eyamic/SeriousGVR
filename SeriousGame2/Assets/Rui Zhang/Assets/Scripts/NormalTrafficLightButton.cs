@@ -14,7 +14,7 @@ public class NormalTrafficLightButton : MonoBehaviour
         if (other.CompareTag("Player")&& trifficP == false)
         {
             playerInRange_Traffic = true;
-            Debug.Log("inRange");
+            //Debug.Log("inRange");
             trifficPanel.SetActive(true);
             trifficP = true;
         }
@@ -33,10 +33,10 @@ public class NormalTrafficLightButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerInRange_Traffic == true && Input.GetKeyDown(KeyCode.E))
+        if (playerInRange_Traffic && Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("play sound");
-            //TrifficSound.PlayDelayed(5.0f);
+            TrifficSound.PlayDelayed(5.0f);
         }
     }
 }
