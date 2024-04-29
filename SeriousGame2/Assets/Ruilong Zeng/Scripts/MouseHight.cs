@@ -14,12 +14,12 @@ public class MouseHight : MonoBehaviour
     public PlayerCamera playerCamera;
     public GameObject ClickEffect;
     public GameObject ClickEffect2;
-
     private GameObject highlightedObject;
     private bool canRotateVertically = true;
-
     private bool haveItem;
+    public AudioSource[] audio;
 
+    
 
     private void Update()
     {
@@ -88,10 +88,12 @@ public class MouseHight : MonoBehaviour
                     {
                         // 触发粒子效果
                         ClickEffectControl(floorHit.point);
+                        audio[1].Play();
                     }
                     else if (floorHit.collider.CompareTag("Dangerous"))
                     {
                         ClickEffectControl2(floorHit.point);
+                        audio[0].Play();
                     }
                 }
             }
