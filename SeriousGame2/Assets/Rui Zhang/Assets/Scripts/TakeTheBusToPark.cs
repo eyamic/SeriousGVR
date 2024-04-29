@@ -10,7 +10,7 @@ public class TakeTheBusToPark : MonoBehaviour
     private Rigidbody endPointRigidbody;
     private bool busMoving = false;
     private bool hasTrigger = false;
-    private Vector3 origianlScale;
+
     public TalkArea area;
 
     private Collider myCollider;
