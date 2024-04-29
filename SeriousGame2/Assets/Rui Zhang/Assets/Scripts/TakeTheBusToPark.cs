@@ -24,6 +24,12 @@ public class TakeTheBusToPark : MonoBehaviour
     public AudioSource busStart;
     public AudioSource busPass;
     public AudioSource busArrivePark;
+    public AudioSource driverAnswer;
+    public AudioSource driverAnswer_ok;
+
+    public GameObject hintPanel;
+    public GameObject askPanel;
+    public GameObject hintPanel2;
 
 
     void Start()
@@ -41,8 +47,16 @@ public class TakeTheBusToPark : MonoBehaviour
             this.transform.Translate(Vector3.right* -busSpeed * Time.deltaTime);
             //busPlayer.transform.localPosition = new Vector3(0, 0, 0);
         }
+        if(talkArea)
+        {
+            Invoke("ShowHintPanel",1.0f);
+            Invoke("HideHintPanel", 2.0f);
+
+        }
+
         if (Input.GetKeyDown(KeyCode.E)&&talkArea)
         {
+            askPanel.SetActive(true);
             numOfTalk++;
             TalkToBus();
         }
@@ -91,20 +105,43 @@ public class TakeTheBusToPark : MonoBehaviour
 
         if (numOfTalk == 1)
         {
-            Debug.Log("1");
+            driverAnswer.PlayDelayed(1.5f);
             busPass.Play();
         }
 
         if (numOfTalk == 2)
         {
-            Debug.Log("2");
+            Invoke("ShowHintPanel2",1.0f);
+            Invoke("HideHintPanel2", 2.0f);
             busPass.Play();
         }
 
         if (numOfTalk ==3 )
         {
             talkOver = true;
+            driverAnswer_ok.PlayDelayed(1.0f);
         }
+    }
+
+    public void ShowHintPanel()
+    {
+        hintPanel.SetActive(true);
+    }
+
+    public void HideHintPanel()
+    {
+        hintPanel.SetActive(false);
+    }
+
+    public void ShowHintPanel2()
+    {
+        hintPanel2.SetActive(true);
+
+    }
+
+    public void HideHintPanel2()
+    {
+        hintPanel2.SetActive(false);
     }
 }
 

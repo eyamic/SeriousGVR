@@ -9,10 +9,14 @@ public class SpeicalTrafficLightButton : MonoBehaviour
     public GameObject speiclTrafficLightPanel_1;
     public GameObject speiclTrafficLightPanel_2;
     public GameObject speiclTrafficLightPanel_3;
+
     public GameObject hintPanel; 
     public AudioSource trifficSound;
     private int triggerTime = 0;
     private bool playerInTriffic = false;
+    private bool talkOver = false;
+
+    public Collider invisibleWall;
 
    
 
@@ -24,19 +28,24 @@ public class SpeicalTrafficLightButton : MonoBehaviour
             Debug.Log("Press E to active the Traffic Light");
         }
     }
+    private void OnTriggerExit(Collider other)
+    {
+        playerInTriffic =false;
+
+    }
 
     private void Update()
     {
         if (playerInTriffic == true && Input.GetKeyDown(KeyCode.E))
         {
             triggerTime++;
+
             if (triggerTime == 1)
             {
                 speiclTrafficLightPanel_1.SetActive(true);
                 Invoke("ClosePanel", 2.0f);
                 Invoke("OpenHintPanel", 3f);
                 Invoke("ClosePanel", 4f);
-
 
             }
             else if (triggerTime == 2)
@@ -50,8 +59,15 @@ public class SpeicalTrafficLightButton : MonoBehaviour
             {
                 speiclTrafficLightPanel_3.SetActive(true);
                 Invoke("ClosePanel", 2.0f);
-                Invoke("PlayDelaySound", 2.5f);
+                trifficSound.PlayDelayed(1.5f);
+                talkOver = true;
+                
             }
+        }
+
+        if(talkOver)
+        {
+            invisibleWall.enabled = false;
         }
     }
 
@@ -60,6 +76,7 @@ public class SpeicalTrafficLightButton : MonoBehaviour
         speiclTrafficLightPanel_1.SetActive(false);
         speiclTrafficLightPanel_2.SetActive(false);
         speiclTrafficLightPanel_3.SetActive(false);
+
         hintPanel.SetActive(false);
     }
 
@@ -68,11 +85,6 @@ public class SpeicalTrafficLightButton : MonoBehaviour
         hintPanel.SetActive(true);
     }
   
-
-    private void PlayDelaySound()
-    {
-        trifficSound.Play();
-    }
 
    
     
