@@ -12,31 +12,76 @@ public class EnemyTalk : Action
     private Animator anim;
     private GameObject player;
     private NavMeshAgent enemyAgent;
-    private bool hasTalked;
+    private AudioSource audioSource;
+    private bool isPlayerSpeaking;
+    private bool isMyTurnToSpeak = false;
+
+    public AudioClip[] dialogueClips; // 敌人的回答语音片段
+    private int currentClipIndex = 0;
 
     public override void OnStart()
     {
-        
         anim = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
-        enemyAgent = gameObject.GetComponent<NavMeshAgent>();
+        enemyAgent = GetComponent<NavMeshAgent>();
+        audioSource = GetComponent<AudioSource>();
         enemyAgent.enabled = false;
-        hasTalked = false;
     }
 
     public override TaskStatus OnUpdate()
     {
-        Talk();
+        CheckPlayerSpeaking();
+        ManageConversation();
         return TaskStatus.Running;
+    }
+
+    void CheckPlayerSpeaking()
+    {
+        // 确保player不为空且具有DialogueManager组件
+        if (player != null && player.GetComponent<DialogueManager>() != null)
+        {
+            isPlayerSpeaking = player.GetComponent<DialogueManager>().IsSpeaking();
+        }
+        else
+        {
+            Debug.LogError("Player object or DialogueManager component is missing!");
+            isPlayerSpeaking = false;  // 安全默认值
+        }
+    }
+
+    void ManageConversation()
+    {
+        if (!isPlayerSpeaking && isMyTurnToSpeak)
+        {
+            if (!audioSource.isPlaying)
+            {
+                Talk();
+            }
+        }
+        else if (isPlayerSpeaking && !audioSource.isPlaying)
+        {
+            isMyTurnToSpeak = true;  // 玩家说完后，轮到敌人说话
+        }
     }
 
     void Talk()
     {
-        if (!hasTalked && Vector3.Distance(transform.position, player.transform.position) <= 2f)
+        if (currentClipIndex < dialogueClips.Length)
         {
-            anim.SetBool("Istalk", true);
-            anim.SetBool("IsWalk", false);
-            hasTalked = true;
+            // 播放敌人的回答语音片段
+            audioSource.clip = dialogueClips[currentClipIndex];
+            audioSource.Play();
+            currentClipIndex++;
         }
+        else
+        {
+            // 对话结束，重置索引以便重新开始
+            currentClipIndex = 0;
+        }
+
+        // 在此处添加敌人的其他行为，例如动画状态等
+        anim.SetBool("Istalk", true);
+        anim.SetBool("IsWalk", false);
+        isMyTurnToSpeak = false;  // 敌人说完后，轮到玩家
     }
 }
