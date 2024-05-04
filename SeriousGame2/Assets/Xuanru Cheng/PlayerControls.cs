@@ -62,6 +62,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dialogue"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""ad76b373-064d-4872-bdb2-bee8f7d70523"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -108,6 +117,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Effect"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c0fbdc7e-19a4-42d9-bd04-ee7346b6c465"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dialogue"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -136,6 +156,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Gameplay_Rotate = m_Gameplay.FindAction("Rotate", throwIfNotFound: true);
         m_Gameplay_Pickup = m_Gameplay.FindAction("Pickup", throwIfNotFound: true);
         m_Gameplay_Effect = m_Gameplay.FindAction("Effect", throwIfNotFound: true);
+        m_Gameplay_Dialogue = m_Gameplay.FindAction("Dialogue", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -204,6 +225,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Rotate;
     private readonly InputAction m_Gameplay_Pickup;
     private readonly InputAction m_Gameplay_Effect;
+    private readonly InputAction m_Gameplay_Dialogue;
     public struct GameplayActions
     {
         private @PlayerControls m_Wrapper;
@@ -212,6 +234,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Rotate => m_Wrapper.m_Gameplay_Rotate;
         public InputAction @Pickup => m_Wrapper.m_Gameplay_Pickup;
         public InputAction @Effect => m_Wrapper.m_Gameplay_Effect;
+        public InputAction @Dialogue => m_Wrapper.m_Gameplay_Dialogue;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -233,6 +256,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Effect.started += instance.OnEffect;
             @Effect.performed += instance.OnEffect;
             @Effect.canceled += instance.OnEffect;
+            @Dialogue.started += instance.OnDialogue;
+            @Dialogue.performed += instance.OnDialogue;
+            @Dialogue.canceled += instance.OnDialogue;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -249,6 +275,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Effect.started -= instance.OnEffect;
             @Effect.performed -= instance.OnEffect;
             @Effect.canceled -= instance.OnEffect;
+            @Dialogue.started -= instance.OnDialogue;
+            @Dialogue.performed -= instance.OnDialogue;
+            @Dialogue.canceled -= instance.OnDialogue;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -318,6 +347,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnRotate(InputAction.CallbackContext context);
         void OnPickup(InputAction.CallbackContext context);
         void OnEffect(InputAction.CallbackContext context);
+        void OnDialogue(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

@@ -1,58 +1,124 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 public class DialogueManager : MonoBehaviour
 {
-    public AudioClip[] dialogueClips;
-    public AudioSource dialogueSource;
-
+    public AudioSource npcAudioSource;  // NPC的音频源
+    public AudioSource playerAudioSource;  // 玩家的音频源
+    public AudioClip[] npcDialogueClips;  // NPC对话片段
+    public AudioClip[] playerDialogueClips;  // 玩家对话片段
     private int currentClipIndex = 0;
     private bool isDialoguePlaying = false;
+    private PlayerControls controls;  // 输入系统控制类
 
-    void Start()
+    void Awake()
     {
-        // 初始化
-        dialogueSource.clip = dialogueClips[currentClipIndex];
+        controls = new PlayerControls();
     }
 
-    void Update()
+    void OnEnable()
     {
-        // 检查对话是否播放完毕
-        if (isDialoguePlaying && !dialogueSource.isPlaying)
-        {
-            PlayNextClip();
-        }
+        controls.Gameplay.Enable();
+        controls.Gameplay.Dialogue.performed += TriggerDialogue;
+    }
+
+    void OnDisable()
+    {
+        controls.Gameplay.Disable();
+        controls.Gameplay.Dialogue.performed -= TriggerDialogue;
     }
 
     public void StartDialogue()
     {
         if (!isDialoguePlaying)
         {
-            dialogueSource.clip = dialogueClips[currentClipIndex];
-            dialogueSource.Play();
+            currentClipIndex = 0;
             isDialoguePlaying = true;
+            PlayNPCDialogue();
         }
     }
 
-    private void PlayNextClip()
+    private void TriggerDialogue(InputAction.CallbackContext context)
     {
-        currentClipIndex++;
-
-        if (currentClipIndex < dialogueClips.Length)
+        Debug.Log($"NPC IsPlaying: {npcAudioSource.isPlaying}, Player IsPlaying: {playerAudioSource.isPlaying}");
+        if (isDialoguePlaying || npcAudioSource.isPlaying || playerAudioSource.isPlaying)
         {
-            dialogueSource.clip = dialogueClips[currentClipIndex];
-            dialogueSource.Play();
+            Debug.Log("Dialogue is currently playing or audio sources are active.");
+            return; // 如果当前正在播放对话，忽略新的输入
+        }
+        
+        ContinueDialogue();
+    }
+
+    void Update()
+    {
+        if (isDialoguePlaying)
+        {
+            if (!npcAudioSource.isPlaying && !playerAudioSource.isPlaying)
+            {
+                ContinueDialogue();
+            }
+        }
+    }
+    private void ContinueDialogue()
+    {
+        Debug.Log("ContinueDialogue called, currentClipIndex: " + currentClipIndex);
+        if (currentClipIndex < npcDialogueClips.Length + playerDialogueClips.Length)
+        {
+            if (currentClipIndex % 2 == 0)
+            {
+                PlayNPCDialogue();
+            }
+            else
+            {
+                PlayPlayerDialogue();
+            }
+            currentClipIndex++; // 确保此行逻辑正确执行
         }
         else
         {
-            // 对话结束
-            isDialoguePlaying = false;
-            currentClipIndex = 0; // 重置索引以便重新开始
+            isDialoguePlaying = false; // 对话结束
+            Debug.Log("Dialogue ended.");
         }
     }
+    private void PlayNPCDialogue()
+    {
+        int npcIndex = currentClipIndex / 2;
+        Debug.Log(npcIndex);
+        if (npcIndex < npcDialogueClips.Length)
+        {
+            npcAudioSource.clip = npcDialogueClips[npcIndex];
+            npcAudioSource.Play();
+        }
+        else
+        {
+            Debug.LogError("NPC Dialogue clip index out of range.");
+        }
+    }
+
+    private void PlayPlayerDialogue()
+    {
+        int playerIndex = (currentClipIndex - 1) / 2;
+        if (playerIndex < playerDialogueClips.Length)
+        {
+            playerAudioSource.clip = playerDialogueClips[playerIndex];
+            playerAudioSource.Play();
+        }
+        else
+        {
+            Debug.LogError("Player Dialogue clip index out of range.");
+        }
+    }
+   
+
     public bool IsSpeaking()
     {
         return isDialoguePlaying;
+    }
+    public void ResetDialogue()
+    {
+        currentClipIndex = 0;
+        isDialoguePlaying = false;
     }
 }
