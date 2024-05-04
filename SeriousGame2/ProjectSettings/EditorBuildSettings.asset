@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/Scenes/Scenes/MainMenu.unity
     guid: 60a714bd729aec14db2b5f04c164e7c2
   - enabled: 1
-    path: Assets/Scenes/Ruilong TestScene.unity
+    path: Assets/Scenes/Scenes/Ruilong TestScene.unity
     guid: b85eed8e03a4cf94ba9b001980fb2eeb
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 0a749dbcdb03e804eae177aa081595cb, type: 2}

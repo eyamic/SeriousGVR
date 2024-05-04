@@ -8,6 +8,7 @@ public class NormalTrafficLightButton : MonoBehaviour
     public GameObject trifficPanel;
     private bool playerInRange_Traffic = false;
     private bool trifficP = false;
+    public AudioSource TeachTriffic;
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
     {
@@ -17,6 +18,7 @@ public class NormalTrafficLightButton : MonoBehaviour
             //Debug.Log("inRange");
             trifficPanel.SetActive(true);
             trifficP = true;
+            TeachTriffic.PlayDelayed(1.0f);
         }
        
     }

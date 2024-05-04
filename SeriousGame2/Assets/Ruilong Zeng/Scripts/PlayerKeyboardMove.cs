@@ -18,7 +18,7 @@ public class PlayerKeyboardMove : MonoBehaviour
     private float verticalInput;
     private Vector3 moveDirection;
     private Rigidbody rb;
-
+    public AudioSource[] audio;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -53,6 +53,17 @@ public class PlayerKeyboardMove : MonoBehaviour
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontaInput;
 
         rb.AddForce(Movespeed * moveDirection.normalized * 10f, ForceMode.Force);
+        if (verticalInput != 0)
+        {
+            if (!audio[0].isPlaying) 
+            {
+                audio[0].Play();
+            }
+        }
+        else
+        {
+            audio[0].Stop();
+        }
     }
     private void SpeedControl()
     {

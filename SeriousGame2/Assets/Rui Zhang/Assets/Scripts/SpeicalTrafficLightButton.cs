@@ -6,32 +6,31 @@ using TMPro;
 public class SpeicalTrafficLightButton : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject speiclTrafficLightPanel_1;
-    public GameObject speiclTrafficLightPanel_2;
-    public GameObject speiclTrafficLightPanel_3;
+    //public GameObject speiclTrafficLightPanel_1;
+    //public GameObject speiclTrafficLightPanel_2;
+    //public GameObject speiclTrafficLightPanel_3;
 
     public GameObject hintPanel; 
-    public AudioSource trifficSound;
+    public AudioSource answerSound;
+    public AudioSource playerHint;
+    public AudioSource playerAsk;
+
     private int triggerTime = 0;
     private bool playerInTriffic = false;
     private bool talkOver = false;
 
     public Collider invisibleWall;
-
+    
    
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            playerHint.PlayDelayed(1.0f);
+            Invoke("OpenHintPanel", 7.0f);
             playerInTriffic = true;
-            Debug.Log("Press E to active the Traffic Light");
         }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        playerInTriffic =false;
-
     }
 
     private void Update()
@@ -39,30 +38,8 @@ public class SpeicalTrafficLightButton : MonoBehaviour
         if (playerInTriffic == true && Input.GetKeyDown(KeyCode.E))
         {
             triggerTime++;
-
-            if (triggerTime == 1)
-            {
-                speiclTrafficLightPanel_1.SetActive(true);
-                Invoke("ClosePanel", 2.0f);
-                Invoke("OpenHintPanel", 3f);
-                Invoke("ClosePanel", 4f);
-
-            }
-            else if (triggerTime == 2)
-            {
-                speiclTrafficLightPanel_2.SetActive(true);
-                Invoke("ClosePanel", 2.0f);
-                Invoke("OpenHintPanel", 3f);
-                Invoke("ClosePanel", 4f);
-            }
-            else if (triggerTime == 3)
-            {
-                speiclTrafficLightPanel_3.SetActive(true);
-                Invoke("ClosePanel", 2.0f);
-                trifficSound.PlayDelayed(1.5f);
-                talkOver = true;
-                
-            }
+            AskToCross();
+            hintPanel.SetActive(false);
         }
 
         if(talkOver)
@@ -70,19 +47,38 @@ public class SpeicalTrafficLightButton : MonoBehaviour
             invisibleWall.enabled = false;
         }
     }
-
-    private void ClosePanel()
+    public void AskToCross()
     {
-        speiclTrafficLightPanel_1.SetActive(false);
-        speiclTrafficLightPanel_2.SetActive(false);
-        speiclTrafficLightPanel_3.SetActive(false);
+        if (triggerTime == 1)
+        {
+            Invoke("HideHintPanel", 1.0f);
+            playerAsk.PlayDelayed(1.0f);
+            Invoke("OpenHintPanel", 3.0f);
+        }
 
-        hintPanel.SetActive(false);
+        if (triggerTime == 2)
+        {
+            Invoke("HideHintPanel", 1.0f);
+            playerAsk.PlayDelayed(1.0f);
+            Invoke("OpenHintPanel", 3.0f);
+        }
+        if (triggerTime == 3)
+        {
+            Invoke("HideHintPanel", 1.0f);
+            playerAsk.PlayDelayed(1.0f);
+            answerSound.PlayDelayed(5.0f);
+            talkOver = true;
+
+        }
     }
-
     private void OpenHintPanel()
     {
         hintPanel.SetActive(true);
+    }
+
+    private void HideHintPanel()
+    {
+        hintPanel.SetActive(false);
     }
   
 
