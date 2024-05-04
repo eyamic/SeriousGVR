@@ -11,6 +11,7 @@ TagManager:
   - Dangerous
   - EndPoint
   - Camera
+  - NPC
   layers:
   - Default
   - TransparentFX
