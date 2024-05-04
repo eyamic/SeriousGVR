@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class DoorOpenClose : MonoBehaviour
 {
+    public DoctorDialogue doctorDialogue;
     private Animator anim;
     private bool inRange = false;//门的状态
     private bool isOpen = false;
     public GameObject doorP;
     private float delayTime = 2f;
+    public GameObject panel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,11 +73,17 @@ public class DoorOpenClose : MonoBehaviour
     }
     private void Update()
     {
-        if (inRange ==true&&Input.GetKeyDown(KeyCode.E))
+        if (inRange ==true&&Input.GetKeyDown(KeyCode.E)&& doctorDialogue.talkOver)
         {
             Debug.Log("play");
             anim.SetTrigger("Open");
             isOpen = true;
+        }
+        else if (inRange == true && Input.GetKeyDown(KeyCode.E) && doctorDialogue.talkOver == false)
+        {
+            panel.SetActive(true);
+            doorP.SetActive(false);
+            Invoke("HidePanel", 2.0f);
         }
 
         if (inRange == false && isOpen == true)
@@ -89,19 +98,9 @@ public class DoorOpenClose : MonoBehaviour
         anim.SetTrigger("Close");
     }
 
-    //private void OnTriggerStay
-    //{
-    //if(other.CompareTag("Player"))
-    // {
-    //isOpen = true;
-    // }
+    void HidePanel()
+    {
+        panel.SetActive(false);
 
-    //private void OnTriggerExit
-    //{
-    //if(other.CompareTag("Player"))
-    //{
-    //isOpen = false;
-    //}    
-
-    //}
+    }
 }
