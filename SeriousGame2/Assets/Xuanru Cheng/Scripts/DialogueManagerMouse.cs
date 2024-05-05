@@ -8,11 +8,13 @@ public class DialogueManagerMouse : MonoBehaviour
     public AudioSource playerAudioSource;  // 玩家的音频源
     public AudioClip[] npcDialogueClips;  // NPC对话片段
     public AudioClip[] playerDialogueClips;  // 玩家对话片段
+    public GameObject gameovepanel;
     private int currentClipIndex = 0;
     private bool isDialoguePlaying = false;
 
     void Start()
     {
+        gameovepanel.SetActive(false);
         currentClipIndex = 0;
         isDialoguePlaying = false;
     }
@@ -58,6 +60,7 @@ public class DialogueManagerMouse : MonoBehaviour
         else
         {
             isDialoguePlaying = false; // 对话结束
+            gameovepanel.SetActive(true);
             Debug.Log("Dialogue ended.");
         }
     }
