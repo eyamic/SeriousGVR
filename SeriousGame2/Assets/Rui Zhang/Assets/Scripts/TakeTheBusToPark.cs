@@ -53,6 +53,7 @@ public class TakeTheBusToPark : MonoBehaviour
             myCollider.enabled = false;
             busInside.enabled = false;
             busArrivePark.Play();
+            Destroy(endPointRigidbody);
 
         }
     }
@@ -70,7 +71,7 @@ public class TakeTheBusToPark : MonoBehaviour
         busMoving = false;
        // origianlScale = busPlayer.transform.localScale;
         busPlayer.transform.parent = null;
-        Destroy(endPointRigidbody);
+
     }
 }
 
