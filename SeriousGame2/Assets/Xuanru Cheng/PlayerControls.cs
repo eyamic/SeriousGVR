@@ -80,6 +80,33 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Traffic"",
+                    ""type"": ""Button"",
+                    ""id"": ""70e98c47-e0a0-4964-af7c-9a91bb227f96"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Bus"",
+                    ""type"": ""Button"",
+                    ""id"": ""cf83ee36-0d60-4a3b-9520-78ab0c634a6a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Doctor"",
+                    ""type"": ""Button"",
+                    ""id"": ""bee9ed7c-6d77-4558-bbe9-01b360d1dbd7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -146,6 +173,39 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""DoorControl"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6f65c7b0-e986-4653-af58-1783ce9b245b"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Traffic"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a6921100-56f4-4d4f-bb5a-eb82ad22e082"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Bus"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9b8086ce-2e11-4097-931e-d7e0c7d6c9dc"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Doctor"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -219,6 +279,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Gameplay_Effect = m_Gameplay.FindAction("Effect", throwIfNotFound: true);
         m_Gameplay_Dialogue = m_Gameplay.FindAction("Dialogue", throwIfNotFound: true);
         m_Gameplay_DoorControl = m_Gameplay.FindAction("DoorControl", throwIfNotFound: true);
+        m_Gameplay_Traffic = m_Gameplay.FindAction("Traffic", throwIfNotFound: true);
+        m_Gameplay_Bus = m_Gameplay.FindAction("Bus", throwIfNotFound: true);
+        m_Gameplay_Doctor = m_Gameplay.FindAction("Doctor", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -291,6 +354,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Effect;
     private readonly InputAction m_Gameplay_Dialogue;
     private readonly InputAction m_Gameplay_DoorControl;
+    private readonly InputAction m_Gameplay_Traffic;
+    private readonly InputAction m_Gameplay_Bus;
+    private readonly InputAction m_Gameplay_Doctor;
     public struct GameplayActions
     {
         private @PlayerControls m_Wrapper;
@@ -301,6 +367,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Effect => m_Wrapper.m_Gameplay_Effect;
         public InputAction @Dialogue => m_Wrapper.m_Gameplay_Dialogue;
         public InputAction @DoorControl => m_Wrapper.m_Gameplay_DoorControl;
+        public InputAction @Traffic => m_Wrapper.m_Gameplay_Traffic;
+        public InputAction @Bus => m_Wrapper.m_Gameplay_Bus;
+        public InputAction @Doctor => m_Wrapper.m_Gameplay_Doctor;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -328,6 +397,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @DoorControl.started += instance.OnDoorControl;
             @DoorControl.performed += instance.OnDoorControl;
             @DoorControl.canceled += instance.OnDoorControl;
+            @Traffic.started += instance.OnTraffic;
+            @Traffic.performed += instance.OnTraffic;
+            @Traffic.canceled += instance.OnTraffic;
+            @Bus.started += instance.OnBus;
+            @Bus.performed += instance.OnBus;
+            @Bus.canceled += instance.OnBus;
+            @Doctor.started += instance.OnDoctor;
+            @Doctor.performed += instance.OnDoctor;
+            @Doctor.canceled += instance.OnDoctor;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -350,6 +428,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @DoorControl.started -= instance.OnDoorControl;
             @DoorControl.performed -= instance.OnDoorControl;
             @DoorControl.canceled -= instance.OnDoorControl;
+            @Traffic.started -= instance.OnTraffic;
+            @Traffic.performed -= instance.OnTraffic;
+            @Traffic.canceled -= instance.OnTraffic;
+            @Bus.started -= instance.OnBus;
+            @Bus.performed -= instance.OnBus;
+            @Bus.canceled -= instance.OnBus;
+            @Doctor.started -= instance.OnDoctor;
+            @Doctor.performed -= instance.OnDoctor;
+            @Doctor.canceled -= instance.OnDoctor;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -437,6 +524,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnEffect(InputAction.CallbackContext context);
         void OnDialogue(InputAction.CallbackContext context);
         void OnDoorControl(InputAction.CallbackContext context);
+        void OnTraffic(InputAction.CallbackContext context);
+        void OnBus(InputAction.CallbackContext context);
+        void OnDoctor(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

@@ -23,6 +23,7 @@ public class Highlight : MonoBehaviour
     private bool canRotateVertically = true;
     private bool haveItem;
     private bool canTriggerEffect = false;  // 标志，指示是否可以触发粒子效果
+    public AudioSource[] audio;
    // private Vector2 rotationInput;
     private void Awake()
     {
@@ -131,6 +132,7 @@ public class Highlight : MonoBehaviour
                     PlayEffect(effect);
                     Debug.Log("Floor effect triggered at " + hit.point);
                     TriggerVibration(0.25f, 0.55f);  // 较低的震动频率
+                    audio[1].Play();
                 }
                 else if (hit.collider.CompareTag("Dangerous"))
                 {
@@ -138,6 +140,7 @@ public class Highlight : MonoBehaviour
                     PlayEffect(effect);
                     Debug.Log("Dangerous effect triggered at " + hit.point);
                     TriggerVibration(0.75f, 1.25f);  // 较高的震动频率
+                    audio[0].Play();
                 }
                 else
                 {

@@ -58,6 +58,33 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Traffic",
+                    "type": "Button",
+                    "id": "70e98c47-e0a0-4964-af7c-9a91bb227f96",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Bus",
+                    "type": "Button",
+                    "id": "cf83ee36-0d60-4a3b-9520-78ab0c634a6a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Doctor",
+                    "type": "Button",
+                    "id": "bee9ed7c-6d77-4558-bbe9-01b360d1dbd7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -124,6 +151,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "DoorControl",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6f65c7b0-e986-4653-af58-1783ce9b245b",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Traffic",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a6921100-56f4-4d4f-bb5a-eb82ad22e082",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Bus",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9b8086ce-2e11-4097-931e-d7e0c7d6c9dc",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Doctor",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
