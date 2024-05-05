@@ -11,10 +11,12 @@ public class DialogueManager : MonoBehaviour
     private int currentClipIndex = 0;
     private bool isDialoguePlaying = false;
     private PlayerControls controls;  // 输入系统控制类
+    public GameObject GameoverPanel;
 
     void Awake()
     {
         controls = new PlayerControls();
+        GameoverPanel.SetActive(false);
     }
 
     void OnEnable()
@@ -79,6 +81,7 @@ public class DialogueManager : MonoBehaviour
         else
         {
             isDialoguePlaying = false; // 对话结束
+            GameoverPanel.SetActive(true);
             Debug.Log("Dialogue ended.");
         }
     }
