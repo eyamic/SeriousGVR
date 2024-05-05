@@ -201,7 +201,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""9b8086ce-2e11-4097-931e-d7e0c7d6c9dc"",
-                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -225,7 +225,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Option"",
+                    ""name"": ""OptionMenu"",
                     ""type"": ""Button"",
                     ""id"": ""0b29c78d-0189-4c37-ae78-5e6d5664c03f"",
                     ""expectedControlType"": ""Button"",
@@ -234,35 +234,75 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Pause"",
+                    ""name"": ""PauseGame"",
                     ""type"": ""Button"",
                     ""id"": ""b3e637b5-2999-4b73-a72f-04afc37f8bbd"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelectButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""85b01906-1674-4f5b-b397-2f63bb1c7f85"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NavigateMenu"",
+                    ""type"": ""Value"",
+                    ""id"": ""146f9af8-71a3-4150-87dd-92435e270519"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""6bd326a2-2630-4702-959c-0e7f90c167c0"",
-                    ""path"": """",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Option"",
+                    ""action"": ""OptionMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""a96c6a16-10a8-43e9-a1a8-9e2bb0a7ac3f"",
-                    ""path"": """",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Pause"",
+                    ""action"": ""PauseGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1f127c6f-fd1b-4a4c-a7ab-ee80aa6e1841"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ad4d2198-c2e9-44e6-a69d-7ddcc3079be1"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NavigateMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -285,8 +325,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
-        m_UI_Option = m_UI.FindAction("Option", throwIfNotFound: true);
-        m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
+        m_UI_OptionMenu = m_UI.FindAction("OptionMenu", throwIfNotFound: true);
+        m_UI_PauseGame = m_UI.FindAction("PauseGame", throwIfNotFound: true);
+        m_UI_SelectButton = m_UI.FindAction("SelectButton", throwIfNotFound: true);
+        m_UI_NavigateMenu = m_UI.FindAction("NavigateMenu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -459,15 +501,19 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_UI;
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
     private readonly InputAction m_UI_Navigate;
-    private readonly InputAction m_UI_Option;
-    private readonly InputAction m_UI_Pause;
+    private readonly InputAction m_UI_OptionMenu;
+    private readonly InputAction m_UI_PauseGame;
+    private readonly InputAction m_UI_SelectButton;
+    private readonly InputAction m_UI_NavigateMenu;
     public struct UIActions
     {
         private @PlayerControls m_Wrapper;
         public UIActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Navigate => m_Wrapper.m_UI_Navigate;
-        public InputAction @Option => m_Wrapper.m_UI_Option;
-        public InputAction @Pause => m_Wrapper.m_UI_Pause;
+        public InputAction @OptionMenu => m_Wrapper.m_UI_OptionMenu;
+        public InputAction @PauseGame => m_Wrapper.m_UI_PauseGame;
+        public InputAction @SelectButton => m_Wrapper.m_UI_SelectButton;
+        public InputAction @NavigateMenu => m_Wrapper.m_UI_NavigateMenu;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -480,12 +526,18 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Navigate.started += instance.OnNavigate;
             @Navigate.performed += instance.OnNavigate;
             @Navigate.canceled += instance.OnNavigate;
-            @Option.started += instance.OnOption;
-            @Option.performed += instance.OnOption;
-            @Option.canceled += instance.OnOption;
-            @Pause.started += instance.OnPause;
-            @Pause.performed += instance.OnPause;
-            @Pause.canceled += instance.OnPause;
+            @OptionMenu.started += instance.OnOptionMenu;
+            @OptionMenu.performed += instance.OnOptionMenu;
+            @OptionMenu.canceled += instance.OnOptionMenu;
+            @PauseGame.started += instance.OnPauseGame;
+            @PauseGame.performed += instance.OnPauseGame;
+            @PauseGame.canceled += instance.OnPauseGame;
+            @SelectButton.started += instance.OnSelectButton;
+            @SelectButton.performed += instance.OnSelectButton;
+            @SelectButton.canceled += instance.OnSelectButton;
+            @NavigateMenu.started += instance.OnNavigateMenu;
+            @NavigateMenu.performed += instance.OnNavigateMenu;
+            @NavigateMenu.canceled += instance.OnNavigateMenu;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -493,12 +545,18 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Navigate.started -= instance.OnNavigate;
             @Navigate.performed -= instance.OnNavigate;
             @Navigate.canceled -= instance.OnNavigate;
-            @Option.started -= instance.OnOption;
-            @Option.performed -= instance.OnOption;
-            @Option.canceled -= instance.OnOption;
-            @Pause.started -= instance.OnPause;
-            @Pause.performed -= instance.OnPause;
-            @Pause.canceled -= instance.OnPause;
+            @OptionMenu.started -= instance.OnOptionMenu;
+            @OptionMenu.performed -= instance.OnOptionMenu;
+            @OptionMenu.canceled -= instance.OnOptionMenu;
+            @PauseGame.started -= instance.OnPauseGame;
+            @PauseGame.performed -= instance.OnPauseGame;
+            @PauseGame.canceled -= instance.OnPauseGame;
+            @SelectButton.started -= instance.OnSelectButton;
+            @SelectButton.performed -= instance.OnSelectButton;
+            @SelectButton.canceled -= instance.OnSelectButton;
+            @NavigateMenu.started -= instance.OnNavigateMenu;
+            @NavigateMenu.performed -= instance.OnNavigateMenu;
+            @NavigateMenu.canceled -= instance.OnNavigateMenu;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -531,7 +589,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     public interface IUIActions
     {
         void OnNavigate(InputAction.CallbackContext context);
-        void OnOption(InputAction.CallbackContext context);
-        void OnPause(InputAction.CallbackContext context);
+        void OnOptionMenu(InputAction.CallbackContext context);
+        void OnPauseGame(InputAction.CallbackContext context);
+        void OnSelectButton(InputAction.CallbackContext context);
+        void OnNavigateMenu(InputAction.CallbackContext context);
     }
 }

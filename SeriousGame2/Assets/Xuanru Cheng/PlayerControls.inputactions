@@ -179,7 +179,7 @@
                 {
                     "name": "",
                     "id": "9b8086ce-2e11-4097-931e-d7e0c7d6c9dc",
-                    "path": "<Gamepad>/leftShoulder",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -203,7 +203,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Option",
+                    "name": "OptionMenu",
                     "type": "Button",
                     "id": "0b29c78d-0189-4c37-ae78-5e6d5664c03f",
                     "expectedControlType": "Button",
@@ -212,35 +212,75 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Pause",
+                    "name": "PauseGame",
                     "type": "Button",
                     "id": "b3e637b5-2999-4b73-a72f-04afc37f8bbd",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SelectButton",
+                    "type": "Button",
+                    "id": "85b01906-1674-4f5b-b397-2f63bb1c7f85",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "NavigateMenu",
+                    "type": "Value",
+                    "id": "146f9af8-71a3-4150-87dd-92435e270519",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
                 {
                     "name": "",
                     "id": "6bd326a2-2630-4702-959c-0e7f90c167c0",
-                    "path": "",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Option",
+                    "action": "OptionMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "a96c6a16-10a8-43e9-a1a8-9e2bb0a7ac3f",
-                    "path": "",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Pause",
+                    "action": "PauseGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1f127c6f-fd1b-4a4c-a7ab-ee80aa6e1841",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ad4d2198-c2e9-44e6-a69d-7ddcc3079be1",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NavigateMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
