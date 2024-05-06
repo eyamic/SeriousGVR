@@ -15,7 +15,7 @@ public class EnemyTalkmouse : Action
     private AudioSource audioSource;
     private bool isPlayerSpeaking;
     private bool isMyTurnToSpeak = false;
-
+    public GameObject TalktoYoungwomanPanel;
  //   public AudioClip[] dialogueClips; // 敌人的回答语音片段
    // private int currentClipIndex = 0;
 
@@ -57,6 +57,7 @@ public class EnemyTalkmouse : Action
             // 在此处添加敌人的其他行为，例如动画状态等
             anim.SetBool("Istalk", false);
             anim.SetBool("IsWalk", true); // 假设敌人可以开始走动
+            TalktoYoungwomanPanel.SetActive(false);//No tips
             isMyTurnToSpeak = false; // Reset flag
         }
         else if (isPlayerSpeaking)
@@ -64,6 +65,7 @@ public class EnemyTalkmouse : Action
             // Ensure the NPC does not walk while the player is speaking
             anim.SetBool("IsWalk", false);
             anim.SetBool("Istalk", true); // Listen or react
+            TalktoYoungwomanPanel.SetActive(true);//Show tips
             isMyTurnToSpeak = true; // Prepare for next turn
         }
     }

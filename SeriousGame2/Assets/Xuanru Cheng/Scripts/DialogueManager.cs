@@ -11,6 +11,7 @@ public class DialogueManager : MonoBehaviour
     private int currentClipIndex = 0;
     private bool isDialoguePlaying = false;
     private PlayerControls controls;  // 输入系统控制类
+  
     public GameObject GameoverPanel;
 
     void Awake()

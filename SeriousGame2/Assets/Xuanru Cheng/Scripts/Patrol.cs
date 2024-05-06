@@ -19,6 +19,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
         private int waypointIndex;
         private float waypointReachedTime;
         private Animator anim;
+        
         public override void OnStart()
         {
             base.OnStart();
