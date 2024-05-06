@@ -11,7 +11,7 @@ public class DialogueManager : MonoBehaviour
     private int currentClipIndex = 0;
     private bool isDialoguePlaying = false;
     private PlayerControls controls;  // 输入系统控制类
-  
+    public GameObject currentInteractable;  // 当前互动的对象
     public GameObject GameoverPanel;
 
     void Awake()
@@ -48,10 +48,18 @@ public class DialogueManager : MonoBehaviour
         if (isDialoguePlaying || npcAudioSource.isPlaying || playerAudioSource.isPlaying)
         {
             Debug.Log("Dialogue is currently playing or audio sources are active.");
-            return; // 如果当前正在播放对话，忽略新的输入
+            return;  // 如果当前正在播放对话，忽略新的输入
         }
         
-        ContinueDialogue();
+        // 检查当前互动对象的标签
+        if (currentInteractable != null && currentInteractable.tag == "NPC")
+        {
+            ContinueDialogue();
+        }
+        else
+        {
+            Debug.Log("Interactable is not a Young woman, dialogue will not trigger.");
+        }
     }
 
     void Update()
@@ -120,6 +128,7 @@ public class DialogueManager : MonoBehaviour
     {
         return isDialoguePlaying;
     }
+
     public void ResetDialogue()
     {
         currentClipIndex = 0;
