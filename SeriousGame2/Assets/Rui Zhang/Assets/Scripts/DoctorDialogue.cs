@@ -89,6 +89,7 @@ public class DoctorDialogue : MonoBehaviour
         if (talkOver)
         {
             hintPanel3.SetActive(true);
+            Invoke("HidePanel", 2.0f);
         }
     }
     
@@ -99,6 +100,8 @@ public class DoctorDialogue : MonoBehaviour
     private void HidePanel()
     {
         hintPanel2.SetActive(false);
+        hintPanel3.SetActive(false);
     }
+ 
 }
 
