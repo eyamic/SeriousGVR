@@ -9,13 +9,15 @@ public class StartVideo : MonoBehaviour
 {
    public GameObject blackPanel;
    public GameObject Rawi;
-   public VideoPlayer video; 
+   public VideoPlayer video;
+   public GameObject playerstart;
    private float timecount;
 
    private void Awake()
    {
       video = GetComponentInChildren<VideoPlayer>();
       blackPanel.SetActive(true);
+      playerstart.SetActive(false);
    }
 
    private void Update()
@@ -26,6 +28,10 @@ public class StartVideo : MonoBehaviour
       {
          blackPanel.SetActive(false);
          video.Play();
+         if (playerstart!=null)
+         {
+            playerstart.SetActive(true);
+         }
          if (timecount>=18)
          {
             Rawi.SetActive(false);
