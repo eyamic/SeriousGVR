@@ -61,6 +61,21 @@ public class DialogueManager : MonoBehaviour
             Debug.Log("Interactable is not a Young woman, dialogue will not trigger.");
         }
     }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "NPC")
+        {
+            currentInteractable = other.gameObject;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject == currentInteractable)
+        {
+            currentInteractable = null;
+        }
+    }
 
     void Update()
     {

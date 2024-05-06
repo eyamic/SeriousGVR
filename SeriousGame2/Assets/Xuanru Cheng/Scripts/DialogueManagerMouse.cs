@@ -11,6 +11,7 @@ public class DialogueManagerMouse : MonoBehaviour
     public GameObject gameovepanel;
     private int currentClipIndex = 0;
     private bool isDialoguePlaying = false;
+    private bool canTriggerDialogue = false;  // 是否可以触发对话
 
     void Start()
     {
@@ -22,7 +23,7 @@ public class DialogueManagerMouse : MonoBehaviour
     void Update()
     {
         // 处理键盘输入
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && canTriggerDialogue)
         {
             if (!isDialoguePlaying)
             {
@@ -32,6 +33,22 @@ public class DialogueManagerMouse : MonoBehaviour
             {
                 ContinueDialogue();
             }
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("NPC"))
+        {
+            canTriggerDialogue = true;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("NPC"))
+        {
+            canTriggerDialogue = false;
         }
     }
 
@@ -55,7 +72,7 @@ public class DialogueManagerMouse : MonoBehaviour
             {
                 PlayPlayerDialogue();
             }
-            currentClipIndex++; // 确保此行逻辑正确执行
+            currentClipIndex++;
         }
         else
         {

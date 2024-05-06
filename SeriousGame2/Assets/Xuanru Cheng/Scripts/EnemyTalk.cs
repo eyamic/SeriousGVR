@@ -26,6 +26,7 @@ public class EnemyTalk : Action
         enemyAgent = GetComponent<NavMeshAgent>();
         audioSource = GetComponent<AudioSource>();
         enemyAgent.enabled = false;
+        TalktoYoungwomanPanel.SetActive(true);
     }
 
     public override TaskStatus OnUpdate()
@@ -57,14 +58,14 @@ public class EnemyTalk : Action
             // 在此处添加敌人的其他行为，例如动画状态等
             anim.SetBool("Istalk", false);
             anim.SetBool("IsWalk", true); // 假设敌人可以开始走动
-            TalktoYoungwomanPanel.SetActive(false);//No tips
+            //TalktoYoungwomanPanel.SetActive(false);//No tips
             isMyTurnToSpeak = false; // Reset flag
         }
         else if (isPlayerSpeaking)
         {
             // Ensure the NPC does not walk while the player is speaking
             anim.SetBool("IsWalk", false);
-            TalktoYoungwomanPanel.SetActive(true);//Show tips
+            //TalktoYoungwomanPanel.SetActive(true);//Show tips
             anim.SetBool("Istalk", true); // Listen or react
             isMyTurnToSpeak = true; // Prepare for next turn
         }
