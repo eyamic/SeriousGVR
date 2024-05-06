@@ -10,7 +10,8 @@ public class SpeicalTrafficLightButton : MonoBehaviour
     //public GameObject speiclTrafficLightPanel_2;
     //public GameObject speiclTrafficLightPanel_3;
 
-    public GameObject hintPanel; 
+    public GameObject hintPanel;
+    public GameObject hintPanel2;
     public AudioSource answerSound;
     public AudioSource playerHint;
     public AudioSource playerAsk;
@@ -27,10 +28,16 @@ public class SpeicalTrafficLightButton : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            playerHint.PlayDelayed(1.0f);
+            playerHint.Play();
             Invoke("OpenHintPanel", 7.0f);
             playerInTriffic = true;
         }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        playerInTriffic = false;
+        hintPanel.SetActive(false);
+        hintPanel2.SetActive(false);
     }
 
     private void Update()
@@ -68,7 +75,10 @@ public class SpeicalTrafficLightButton : MonoBehaviour
             playerAsk.PlayDelayed(1.0f);
             answerSound.PlayDelayed(5.0f);
             talkOver = true;
-
+        }
+        if (talkOver && playerInTriffic)
+        {
+            Invoke("ShowPanel", 6.0f);
         }
     }
     private void OpenHintPanel()
@@ -80,7 +90,13 @@ public class SpeicalTrafficLightButton : MonoBehaviour
     {
         hintPanel.SetActive(false);
     }
-  
+
+
+    private void ShowPanel()
+    {
+        hintPanel2.SetActive(true);
+    }
+    
 
    
     

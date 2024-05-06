@@ -55,6 +55,7 @@ public class DoctorDialogue : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        inRange = false;
         hintPanel.SetActive(false);
         hintPanel2.SetActive(false);
         hintPanel3.SetActive(false);
@@ -69,7 +70,7 @@ public class DoctorDialogue : MonoBehaviour
             doctor_dialogue1.PlayDelayed(5.0f);
             dialogue1Over = true;
             Invoke("ShowPanel", 18.0f);
-            Invoke("HidePanel", 20.0f);
+            Invoke("HidePanel3", 20.0f);
         }
         if (dialogue1Over && numOfTalk ==2 )
         {
@@ -77,7 +78,7 @@ public class DoctorDialogue : MonoBehaviour
             doctor_dialogue2.PlayDelayed(3.0f);
             dialogue2Over = true;
             Invoke("ShowPanel", 9.0f);
-            Invoke("HidePanel", 10.0f);
+            Invoke("HidePanel3", 10.0f);
 
         }
         if (dialogue2Over && numOfTalk ==3)
@@ -86,10 +87,10 @@ public class DoctorDialogue : MonoBehaviour
             talkOver = true;
         }
 
-        if (talkOver)
+        if (talkOver && inRange)
         {
             hintPanel3.SetActive(true);
-            Invoke("HidePanel", 2.0f);
+            Invoke("HidePanel3", 2.0f);
         }
     }
     
@@ -97,7 +98,7 @@ public class DoctorDialogue : MonoBehaviour
     {
         hintPanel2.SetActive(true);
     }
-    private void HidePanel()
+    private void HidePanel3()
     {
         hintPanel2.SetActive(false);
         hintPanel3.SetActive(false);
