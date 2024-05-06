@@ -49,21 +49,9 @@ public class Highlight : MonoBehaviour
 
         Vector3 direction = (forward * move.y + right * move.x).normalized; // 根据相机方向计算新的方向向量
         transform.Translate(direction * Time.deltaTime * 10f, Space.World); // 使用世界坐标系移动
-        // 只使用水平输入控制光标移动
-        // 处理旋转
-   //     float yaw = rotationInput.x * 100f * Time.deltaTime;
-       // transform.Rotate(0, yaw, 0, Space.World);
-      // UpdateCursor(rotationInput);
+       
     }
-
-   
- //   private void MoveCursor(Vector2 navigationInput)
-  //  {
-    //    Vector2 move = navigationInput * Time.deltaTime * 1000.0f;
-      //  Vector3 currentPos = cursorRectTransform.anchoredPosition;
-      //  Vector3 newPos = currentPos + new Vector3(move.x, move.y, 0);
-       // cursorRectTransform.anchoredPosition = new Vector2(newPos.x, newPos.y);
-   // }
+    
     private void LateUpdate()
     {
         RaycastHighlight();

@@ -107,6 +107,24 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PickupPhone"",
+                    ""type"": ""Button"",
+                    ""id"": ""2f34ac68-7dfb-4aa0-b663-d4da073ea5f1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Flower"",
+                    ""type"": ""Button"",
+                    ""id"": ""1546aec1-d168-4235-9280-458b9bf31eaf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -206,6 +224,28 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Doctor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""16ae637a-f6d1-41ad-b653-1c72bb69355e"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PickupPhone"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0b082255-d32f-4a13-b2b9-80b630aa64bf"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Flower"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -322,6 +362,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Gameplay_Traffic = m_Gameplay.FindAction("Traffic", throwIfNotFound: true);
         m_Gameplay_Bus = m_Gameplay.FindAction("Bus", throwIfNotFound: true);
         m_Gameplay_Doctor = m_Gameplay.FindAction("Doctor", throwIfNotFound: true);
+        m_Gameplay_PickupPhone = m_Gameplay.FindAction("PickupPhone", throwIfNotFound: true);
+        m_Gameplay_Flower = m_Gameplay.FindAction("Flower", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -399,6 +441,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Traffic;
     private readonly InputAction m_Gameplay_Bus;
     private readonly InputAction m_Gameplay_Doctor;
+    private readonly InputAction m_Gameplay_PickupPhone;
+    private readonly InputAction m_Gameplay_Flower;
     public struct GameplayActions
     {
         private @PlayerControls m_Wrapper;
@@ -412,6 +456,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Traffic => m_Wrapper.m_Gameplay_Traffic;
         public InputAction @Bus => m_Wrapper.m_Gameplay_Bus;
         public InputAction @Doctor => m_Wrapper.m_Gameplay_Doctor;
+        public InputAction @PickupPhone => m_Wrapper.m_Gameplay_PickupPhone;
+        public InputAction @Flower => m_Wrapper.m_Gameplay_Flower;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -448,6 +494,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Doctor.started += instance.OnDoctor;
             @Doctor.performed += instance.OnDoctor;
             @Doctor.canceled += instance.OnDoctor;
+            @PickupPhone.started += instance.OnPickupPhone;
+            @PickupPhone.performed += instance.OnPickupPhone;
+            @PickupPhone.canceled += instance.OnPickupPhone;
+            @Flower.started += instance.OnFlower;
+            @Flower.performed += instance.OnFlower;
+            @Flower.canceled += instance.OnFlower;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -479,6 +531,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Doctor.started -= instance.OnDoctor;
             @Doctor.performed -= instance.OnDoctor;
             @Doctor.canceled -= instance.OnDoctor;
+            @PickupPhone.started -= instance.OnPickupPhone;
+            @PickupPhone.performed -= instance.OnPickupPhone;
+            @PickupPhone.canceled -= instance.OnPickupPhone;
+            @Flower.started -= instance.OnFlower;
+            @Flower.performed -= instance.OnFlower;
+            @Flower.canceled -= instance.OnFlower;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -585,6 +643,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnTraffic(InputAction.CallbackContext context);
         void OnBus(InputAction.CallbackContext context);
         void OnDoctor(InputAction.CallbackContext context);
+        void OnPickupPhone(InputAction.CallbackContext context);
+        void OnFlower(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

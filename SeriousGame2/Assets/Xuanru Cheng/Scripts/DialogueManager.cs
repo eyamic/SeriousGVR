@@ -5,32 +5,41 @@ using UnityEngine.InputSystem;
 public class DialogueManager : MonoBehaviour
 {
     public AudioSource npcAudioSource;  // NPC的音频源
+   // public AudioSource npcAudioSource1;
     public AudioSource playerAudioSource;  // 玩家的音频源
+   // public AudioSource playerAudioSource1;  // 玩家的音频源
     public AudioClip[] npcDialogueClips;  // NPC对话片段
+  //  public AudioClip[] npcDialogueClips2;
     public AudioClip[] playerDialogueClips;  // 玩家对话片段
+   // public AudioClip[] playerDialogueClips2;  // 玩家对话片段2
     private int currentClipIndex = 0;
     private bool isDialoguePlaying = false;
     private PlayerControls controls;  // 输入系统控制类
     public GameObject currentInteractable;  // 当前互动的对象
     public GameObject GameoverPanel;
+    //public GameObject rose;  // 特定的物体 "rose"
 
     void Awake()
     {
         controls = new PlayerControls();
         GameoverPanel.SetActive(false);
+       // rose.SetActive(false); 
     }
 
     void OnEnable()
     {
         controls.Gameplay.Enable();
         controls.Gameplay.Dialogue.performed += TriggerDialogue;
+        //controls.Gameplay.Flower.performed += TriggerFlowerDialogue;  // 监听 LeftTrigger
     }
 
     void OnDisable()
     {
         controls.Gameplay.Disable();
         controls.Gameplay.Dialogue.performed -= TriggerDialogue;
+        //controls.Gameplay.Flower.performed -= TriggerFlowerDialogue;  // 移除监听
     }
+   
 
     public void StartDialogue()
     {

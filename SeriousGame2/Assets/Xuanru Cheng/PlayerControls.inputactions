@@ -85,6 +85,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "PickupPhone",
+                    "type": "Button",
+                    "id": "2f34ac68-7dfb-4aa0-b663-d4da073ea5f1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Flower",
+                    "type": "Button",
+                    "id": "1546aec1-d168-4235-9280-458b9bf31eaf",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -184,6 +202,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Doctor",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "16ae637a-f6d1-41ad-b653-1c72bb69355e",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PickupPhone",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0b082255-d32f-4a13-b2b9-80b630aa64bf",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Flower",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
