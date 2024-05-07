@@ -5,124 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5c4c8469-ad74-4001-9484-4ba951f069f8" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SeriousGame2/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vsconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Scripts/BeachAssign.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Ruilong Zeng/Scripts/BeachAssign.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Scripts/CameraMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Ruilong Zeng/Scripts/CameraMove.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Scripts/DialogSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Ruilong Zeng/Scripts/DialogSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Scripts/Gameover.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Ruilong Zeng/Scripts/Gameover.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Scripts/HighligjtTree.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Scripts/HighligjtTree.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Scripts/MainMenutoGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Ruilong Zeng/Scripts/MainMenutoGame.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Scripts/MenuFuncation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Ruilong Zeng/Scripts/MenuFuncation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Scripts/MouseHight.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Ruilong Zeng/Scripts/MouseHight.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Scripts/PlayerCamera.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Ruilong Zeng/Scripts/PlayerCamera.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Scripts/PlayerKeyboardMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Ruilong Zeng/Scripts/PlayerKeyboardMove.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Scripts/StartVideo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Ruilong Zeng/Scripts/StartVideo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/Arrow01Blue.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/Arrow01Blue.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/Arrow01Green.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/Arrow01Green.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/Arrow01RedOrange.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/Arrow01RedOrange.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/Background.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/Background.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/CenterLight01.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/CenterLight01.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/CenterLight02.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/CenterLight02.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/CenterLight03.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/CenterLight03.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/Circle01.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/Circle01.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/Circle03.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/Circle03.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/Circle04.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/Circle04.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/Circle05.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/Circle05.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/Circle06.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/Circle06.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/Circle08.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/Circle08.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/DangerPingSkull.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/DangerPingSkull.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/Geo01.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/Geo01.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/Glow01.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/Glow01.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/MagicCircle01.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/MagicCircle01.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/SceneObjects.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/SceneObjects.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/Sign01.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/Sign01.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/Sign02.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/Sign02.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/Sign03.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/Sign03.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/Sign05.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/Sign05.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/Triangle01.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/Triangle01.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/TwoEyes.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/TwoEyes.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/X01.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Materials/X01.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/Arrow01Blue.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/Arrow01Blue.psd.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/Arrow01Green.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/Arrow01Green.psd.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/Arrow01RedOrange.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/Arrow01RedOrange.psd.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/CenterLight01.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/CenterLight01.psd.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/CenterLight02.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/CenterLight02.psd.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/CenterLight03.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/CenterLight03.psd.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/Circle02.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/Circle02.psd.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/Circle03.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/Circle03.psd.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/Circle04.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/Circle04.psd.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/Circle05.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/Circle05.psd.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/Circle06.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/Circle06.psd.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/Circle07.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/Circle07.psd.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/Circle08.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/Circle08.psd.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/Circle09.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/Circle09.psd.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/DangerPingSkull.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/DangerPingSkull.psd.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/Geo01.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/Geo01.psd.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/Glow01.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/Glow01.psd.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/LightPoint01.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/LightPoint01.psd.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/MagicCircle01.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/MagicCircle01.psd.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/RockFloor.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/RockFloor.psd.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/Sign02.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/Sign02.psd.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/Sign03.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/Sign03.psd.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/Sign05.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/Sign05.psd.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/SmallFireGlow.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/SmallFireGlow.psd.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/Triangle01.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/Triangle01.psd.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/TwoEyes.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/TwoEyes.psd.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/X01.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Ruilong Zeng/Third-Party Resource/Inguz Media Studio/The Map Trackers VFX/Sprites/X01.psd.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SeriousGame2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SeriousGame2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scenes/MainMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Total4_Rui.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Total4_Rui.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Total5.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Total5.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,7 +101,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1715098523018</updated>
-      <workItem from="1715098526311" duration="915000" />
+      <workItem from="1715098526311" duration="2979000" />
     </task>
     <servers />
   </component>

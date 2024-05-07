@@ -1394,16 +1394,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 863754fe6ca67ee49a3394a43d600165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Canvans: {fileID: 871995871}
-  AboutCanvans: {fileID: 2129578092}
-  ChoseCnavas: {fileID: 880047127}
+  Canvas: {fileID: 871995871}
+  AboutCanvas: {fileID: 2129578092}
+  ChooseCanvas: {fileID: 880047127}
   start: {fileID: 292952324}
   Quit: {fileID: 916477994}
   About: {fileID: 795613420}
-  closeAboutCanvansButton: {fileID: 1747497163}
-  CloseChoseCanvasButton: {fileID: 325466746}
-  keyboradButton: {fileID: 1518752857}
-  ContorllerButton: {fileID: 2070507425}
+  closeAboutCanvasButton: {fileID: 1747497163}
+  CloseChooseCanvasButton: {fileID: 325466746}
+  keyboardButton: {fileID: 1518752857}
+  controllerButton: {fileID: 2070507425}
 --- !u!1 &880047127
 GameObject:
   m_ObjectHideFlags: 0
