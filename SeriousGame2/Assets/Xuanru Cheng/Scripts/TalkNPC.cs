@@ -84,27 +84,25 @@ public AudioSource player_dialogue1;
 
     private void BeginTalkToNpc()
     {
-        if (!inRange) return; // Ensure the player is in range before processing the dialogue.
-
-        numOfTalk++; // Increments each time L2 is pressed within range.
-
-        if (numOfTalk == 1)
+        // 对话逻辑，根据对话次数控制不同阶段的播放Dialogue logic to control different stages of playback based on number of dialogues
+        if (numOfTalk ==1 && inRange)
         {
             player_dialogue1.Play();
             npc_dialogue1.PlayDelayed(4.0f);
             dialogue1Over = true;
             Invoke("ShowPanel", 6.0f);
             Invoke("HidePanel", 8.0f);
+
         }
-        else if (numOfTalk == 2 && dialogue1Over)
+        if (numOfTalk ==2 && dialogue1Over)
         {
             player_dialogue2.Play();
             npc_dialogue2.PlayDelayed(5.5f);
             talkOver = true;
         }
-        else if (talkOver)
+        if (talkOver&& inRange)
         {
-            Invoke("ShowPanel2", 9.5f); // This will show the final panel if all dialogues are complete.
+            Invoke("ShowPanel2", 9.5f);// This will show the final panel if all dialogues are complete.
         }
     }
 

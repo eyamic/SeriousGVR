@@ -59,6 +59,7 @@ public class Opendoor : MonoBehaviour
         {
             Debug.Log("Player exited the trigger area."); // Logging player's exit for debugging.
             inRange = false; // Player has left the interaction range.
+            doorP.SetActive(false);
             if (isOpen && !inRange) {
                 Invoke("CloseDoor", delayTime); // Scheduling the CloseDoor function to run after a delay, to close the door automatically.
             }

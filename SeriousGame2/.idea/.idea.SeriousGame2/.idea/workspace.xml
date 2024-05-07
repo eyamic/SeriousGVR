@@ -6,9 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="5c4c8469-ad74-4001-9484-4ba951f069f8" name="更改" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SeriousGame2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SeriousGame2/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scenes/MainMenu.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Total4_Rui.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Total4_Rui.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Total5.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Total5.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Xuanru Cheng/Scripts/Opendoor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Xuanru Cheng/Scripts/Opendoor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Xuanru Cheng/Scripts/TalkNPC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Xuanru Cheng/Scripts/TalkNPC.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,10 +20,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2g98dcxaOl75QeWSUmZqxSm3ZGQ" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -41,13 +43,13 @@
   },
   "keyToStringList": {
     "rider.external.source.directories": [
-      "C:\\Users\\Eyamic\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\DecompilerCache",
-      "C:\\Users\\Eyamic\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\SourcesCache",
-      "C:\\Users\\Eyamic\\AppData\\Local\\Symbols\\src"
+      "C:\\Users\\lenovo\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\DecompilerCache",
+      "C:\\Users\\lenovo\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\SourcesCache",
+      "C:\\Users\\lenovo\\AppData\\Local\\Symbols\\src"
     ]
   }
 }]]></component>
-  <component name="RunManager" selected="附加到 Unity 编辑器.附加到 Unity 编辑器">
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="启动 Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.25f1c1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath &quot;D:\PG_Serious Game Design\Semester2\SeriousGame2\SeriousGVR\SeriousGame2&quot; -debugCodeOptimization" />
@@ -64,6 +66,22 @@
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
     </configuration>
+    <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.25f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-projectPath E:\gitgame\SeriousGVR\SeriousGame2 -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="E:\gitgame\SeriousGVR\SeriousGame2" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.25f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath E:\gitgame\SeriousGVR\SeriousGame2 -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="E:\gitgame\SeriousGVR\SeriousGame2" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="单元测试(批处理模式)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.25f1c1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath &quot;D:\PG_Serious Game Design\Semester2\SeriousGame2\SeriousGVR\SeriousGame2&quot; -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
@@ -72,7 +90,7 @@
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
     </configuration>
-    <configuration name="附加到 Unity 编辑器并运行" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
@@ -82,7 +100,7 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="附加到 Unity 编辑器" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
@@ -102,6 +120,7 @@
       <option name="presentableId" value="Default" />
       <updated>1715098523018</updated>
       <workItem from="1715098526311" duration="2979000" />
+      <workItem from="1715112542607" duration="1958000" />
     </task>
     <servers />
   </component>
