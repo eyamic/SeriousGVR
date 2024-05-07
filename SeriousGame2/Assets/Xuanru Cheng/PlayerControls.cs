@@ -125,6 +125,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NPC"",
+                    ""type"": ""Button"",
+                    ""id"": ""7c3871b1-3e7d-4e3e-95c0-00972eaa9093"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -248,6 +257,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Flower"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""796f193d-39d2-41c0-a607-6dfc19ceebe6"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NPC"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -364,6 +384,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Gameplay_Doctor = m_Gameplay.FindAction("Doctor", throwIfNotFound: true);
         m_Gameplay_PickupPhone = m_Gameplay.FindAction("PickupPhone", throwIfNotFound: true);
         m_Gameplay_Flower = m_Gameplay.FindAction("Flower", throwIfNotFound: true);
+        m_Gameplay_NPC = m_Gameplay.FindAction("NPC", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -443,6 +464,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Doctor;
     private readonly InputAction m_Gameplay_PickupPhone;
     private readonly InputAction m_Gameplay_Flower;
+    private readonly InputAction m_Gameplay_NPC;
     public struct GameplayActions
     {
         private @PlayerControls m_Wrapper;
@@ -458,6 +480,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Doctor => m_Wrapper.m_Gameplay_Doctor;
         public InputAction @PickupPhone => m_Wrapper.m_Gameplay_PickupPhone;
         public InputAction @Flower => m_Wrapper.m_Gameplay_Flower;
+        public InputAction @NPC => m_Wrapper.m_Gameplay_NPC;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -500,6 +523,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Flower.started += instance.OnFlower;
             @Flower.performed += instance.OnFlower;
             @Flower.canceled += instance.OnFlower;
+            @NPC.started += instance.OnNPC;
+            @NPC.performed += instance.OnNPC;
+            @NPC.canceled += instance.OnNPC;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -537,6 +563,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Flower.started -= instance.OnFlower;
             @Flower.performed -= instance.OnFlower;
             @Flower.canceled -= instance.OnFlower;
+            @NPC.started -= instance.OnNPC;
+            @NPC.performed -= instance.OnNPC;
+            @NPC.canceled -= instance.OnNPC;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -645,6 +674,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnDoctor(InputAction.CallbackContext context);
         void OnPickupPhone(InputAction.CallbackContext context);
         void OnFlower(InputAction.CallbackContext context);
+        void OnNPC(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

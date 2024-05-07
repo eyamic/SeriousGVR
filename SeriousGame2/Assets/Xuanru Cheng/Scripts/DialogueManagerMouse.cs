@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class DialogueManagerMouse : MonoBehaviour
 {
-    public AudioSource npcAudioSource;  // NPC的音频源
-    public AudioSource playerAudioSource;  // 玩家的音频源
-    public AudioClip[] npcDialogueClips;  // NPC对话片段
-    public AudioClip[] playerDialogueClips;  // 玩家对话片段
+    public AudioSource npcAudioSource;  // NPC的音频源Audio sources for NPCs
+    public AudioSource playerAudioSource;  // 玩家的音频源Audio sources for player
+    public AudioClip[] npcDialogueClips;  // NPC对话片段NPC dialogue clips
+    public AudioClip[] playerDialogueClips;  // 玩家对话片段Player dialogue clips
     public GameObject gameovepanel;
     private int currentClipIndex = 0;
     private bool isDialoguePlaying = false;
-    private bool canTriggerDialogue = false;  // 是否可以触发对话
+    private bool canTriggerDialogue = false;  // 是否可以触发对话Whether a dialogue can be triggered
 
     void Start()
     {
@@ -25,13 +25,16 @@ public class DialogueManagerMouse : MonoBehaviour
         // 处理键盘输入
         if (Input.GetKeyDown(KeyCode.E) && canTriggerDialogue)
         {
+            // Checks if the 'E' key is pressed and whether the dialogue can be triggered.
             if (!isDialoguePlaying)
             {
-                StartDialogue();
+                // If no dialogue is currently playing:
+                StartDialogue(); // Calls the StartDialogue function to begin a new dialogue.
             }
             else if (!npcAudioSource.isPlaying && !playerAudioSource.isPlaying)
             {
-                ContinueDialogue();
+                // If a dialogue is currently active but no audio (neither NPC nor player) is playing:
+                ContinueDialogue(); // Calls the ContinueDialogue function to proceed to the next part of the dialogue.
             }
         }
     }
@@ -76,7 +79,7 @@ public class DialogueManagerMouse : MonoBehaviour
         }
         else
         {
-            isDialoguePlaying = false; // 对话结束
+            isDialoguePlaying = false; // 对话结束End of dialogue
             gameovepanel.SetActive(true);
             Debug.Log("Dialogue ended.");
         }

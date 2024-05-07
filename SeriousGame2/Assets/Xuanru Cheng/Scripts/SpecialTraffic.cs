@@ -37,38 +37,38 @@ public class SpecialTraffic : MonoBehaviour
 
     private void HandleTrafficControl(InputAction.CallbackContext context)
     {
-        if (playerInTriffic)
+        if (playerInTriffic) // If the player is in a traffic area
         {
-            triggerTime++;
-            AskToCross();
-            hintPanel.SetActive(false);
+            triggerTime++; // Increase the number of triggers
+            AskToCross(); // Handle the request to cross the street
+            hintPanel.SetActive(false); // hide the hint panel
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player")) // if the collision is with a player
         {
-            playerHint.PlayDelayed(1.0f);
-            Invoke("OpenHintPanel", 7.0f);
-            playerInTriffic = true;
+            playerHint.PlayDelayed(1.0f); // delay playing the player hint for 1 second
+            Invoke("OpenHintPanel", 7.0f); // show hint panel after 7 seconds
+            playerInTriffic = true; // mark the player as entering the traffic area
         }
     }
 
     public void AskToCross()
     {
-        if (triggerTime == 1 || triggerTime == 2)
+        if (triggerTime == 1 || triggerTime == 2) // first or second trigger
         {
-            Invoke("HideHintPanel", 1.0f);
-            playerAsk.PlayDelayed(1.0f);
-            Invoke("OpenHintPanel", 3.0f);
+            Invoke("HideHintPanel", 1.0f); // hide hint panel after 1 second
+            playerAsk.PlayDelayed(1.0f); // play the player ask sound after 1 second
+            Invoke("OpenHintPanel", 3.0f); // show hint panel again after 3 seconds
         }
-        if (triggerTime == 3)
+        if (triggerTime == 3) // trigger for the third time
         {
-            Invoke("HideHintPanel", 1.0f);
-            playerAsk.PlayDelayed(1.0f);
-            answerSound.PlayDelayed(5.0f);
-            talkOver = true;
+            Invoke("HideHintPanel", 1.0f); // hide hint panel after 1 second
+            playerAsk.PlayDelayed(1.0f); // play the player ask sound after 1 second
+            answerSound.PlayDelayed(5.0f); // play answer sound after 5 seconds
+            talkOver = true; // Mark the end of the conversation.
         }
     }
 
@@ -84,9 +84,9 @@ public class SpecialTraffic : MonoBehaviour
 
     void Update()
     {
-        if(talkOver)
+        if(talkOver) // if the conversation is over
         {
-            invisibleWall.enabled = false;
+            invisibleWall.enabled = false; // disable the invisible wall and allow the player to pass through it
         }
     }
 }

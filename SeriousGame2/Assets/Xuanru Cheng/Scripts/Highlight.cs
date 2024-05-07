@@ -5,31 +5,32 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 public class Highlight : MonoBehaviour
 {
-     public PlayerControls controls;
-     private Vector2 move;
-     private Vector2 rotationInput;
-    public RectTransform cursorRectTransform;
-    public Transform cameraTransform;
-    public Transform handTransform;
-    public CameraXuanru playerCamera;
+    public PlayerControls controls; // Holds a reference to the custom input actions defined in the PlayerControls.
+    private Vector2 move; // Stores the movement vector input from the player.
+    private Vector2 rotationInput; // Stores the rotation input from the player.
+    public RectTransform cursorRectTransform; // A reference to the RectTransform of the cursor, used for raycasting.
+    public Transform cameraTransform; // Reference to the camera's transform, used for directional calculations.
+    public Transform handTransform; // Reference to the transform representing the player's hand, not used in the provided snippet.
+    public CameraXuanru playerCamera; // Reference to a custom camera control script, not used in the provided snippet.
 
-    public GameObject talkCanvas;
-    public GameObject ClickEffect;
-    public GameObject ClickEffect2;
+    public GameObject talkCanvas; // UI canvas for dialogues or interactions.
+    public GameObject ClickEffect; // The particle effect prefab to instantiate on normal surfaces.
+    public GameObject ClickEffect2; // The particle effect prefab to instantiate on dangerous surfaces.
 
-    public Button closeButton;
+    public Button closeButton; // A UI button to close the talk canvas.
 
-    private GameObject highlightedObject;
-    private bool canRotateVertically = true;
-    private bool haveItem;
-    private bool canTriggerEffect = false;  // 标志，指示是否可以触发粒子效果
-    public AudioSource[] audio;
+    private GameObject highlightedObject; // Stores the currently highlighted object.
+    private bool canRotateVertically = true; // Flag to control vertical rotation, not used in the provided snippet.
+    private bool haveItem; // Flag indicating if the player has picked up an item, not used in the provided snippet.
+    private bool canTriggerEffect = false; // Flag to indicate whether a particle effect can be triggered.
+
+    public AudioSource[] audio; // Array of AudioSources to play different sounds.
    // private Vector2 rotationInput;
     private void Awake()
     {
-        controls = new PlayerControls();
-        controls.Gameplay.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
-        controls.Gameplay.Move.canceled += ctx => move = Vector2.zero;
+        controls = new PlayerControls();// Initializes the PlayerControls.
+        controls.Gameplay.Move.performed += ctx => move = ctx.ReadValue<Vector2>();// Sets up movement input handling.
+        controls.Gameplay.Move.canceled += ctx => move = Vector2.zero;// Resets movement input when the action is canceled.
        // controls.Gameplay.Rotate.performed += ctx => rotationInput = ctx.ReadValue<Vector2>();
        // controls.Gameplay.Rotate.canceled += ctx => rotationInput = Vector2.zero;
         controls.Gameplay.Pickup.performed += ctx => HandleButtonWestPress();
@@ -41,7 +42,7 @@ public class Highlight : MonoBehaviour
   
     private void Update()
     {
-        // 将移动输入转换为基于相机的方向
+        // 将移动输入转换为基于相机的方向 Translates movement input into world coordinates based on camera orientation, ignoring vertical movement.
         Vector3 forward = cameraTransform.forward;
         forward.y = 0; // 保持在水平平面上
         Vector3 right = cameraTransform.right;
@@ -58,9 +59,10 @@ public class Highlight : MonoBehaviour
     }
     private void RaycastHighlight()
     {
-       
-        Ray ray = Camera.main.ScreenPointToRay(cursorRectTransform.position);
+        // Performs a raycast from the cursor's position to detect interactable objects.
+        Ray ray = Camera.main.ScreenPointToRay(cursorRectTransform.position);// Converts cursor position to a ray.
         RaycastHit hit;
+        
 
         if (Physics.Raycast(ray, out hit))
         {
@@ -80,15 +82,15 @@ public class Highlight : MonoBehaviour
     }
 
     private void ProcessHighlight(GameObject hitObject)
-    {
+    {// A helper method to process highlighting of objects.
         Outline outline = hitObject.GetComponent<Outline>();
         if (outline != null)
         {
-            if (highlightedObject != hitObject)
+            if (highlightedObject != hitObject)// Checks if it is a new object to highlight.
             {
                 ClearHighlight();
                 highlightedObject = hitObject;
-                outline.enabled = true;
+                outline.enabled = true;// Enables the outline.
             }
         }
         else
@@ -98,7 +100,7 @@ public class Highlight : MonoBehaviour
     }
 
     private void HandleButtonWestPress()
-    {
+    { // Handles the logic when the Pickup button is pressed.
         if (highlightedObject != null && highlightedObject.CompareTag("CanPickup"))
         {
             highlightedObject.SetActive(false);
@@ -108,7 +110,7 @@ public class Highlight : MonoBehaviour
     }
 
     private void HandleButtonSouthPress()
-    {
+    {// Handles the logic when the Effect button is pressed.
         if (canTriggerEffect)
         {
             Ray ray = Camera.main.ScreenPointToRay(cursorRectTransform.position);
@@ -119,7 +121,7 @@ public class Highlight : MonoBehaviour
                     GameObject effect = Instantiate(ClickEffect, hit.point, Quaternion.identity);
                     PlayEffect(effect);
                     Debug.Log("Floor effect triggered at " + hit.point);
-                    TriggerVibration(0.25f, 0.55f);  // 较低的震动频率
+                    TriggerVibration(0.25f, 0.55f);  // 较低的震动频率 // Lower vibration frequency
                     audio[1].Play();
                 }
                 else if (hit.collider.CompareTag("Dangerous"))
@@ -127,7 +129,7 @@ public class Highlight : MonoBehaviour
                     GameObject effect = Instantiate(ClickEffect2, hit.point, Quaternion.identity);
                     PlayEffect(effect);
                     Debug.Log("Dangerous effect triggered at " + hit.point);
-                    TriggerVibration(0.75f, 1.25f);  // 较高的震动频率
+                    TriggerVibration(0.75f, 1.25f);  // 较高的震动频率 // Higher vibration frequency
                     audio[0].Play();
                 }
                 else
@@ -142,14 +144,14 @@ public class Highlight : MonoBehaviour
         }
     }
 
-// 用于播放粒子效果并设置其自动销毁
+    // Method to play a particle effect and schedule its automatic destruction.
      void PlayEffect(GameObject effect)
     {
         var particleSystem = effect.GetComponent<ParticleSystem>();
         if (particleSystem != null && !particleSystem.isPlaying)
         {
             particleSystem.Play();
-            Destroy(effect, particleSystem.main.duration);  // 根据粒子系统的持续时间销毁对象
+            Destroy(effect, particleSystem.main.duration);  // Schedules the destruction of the effect object based on the duration of the particles.
         }
         else
         {
@@ -171,16 +173,17 @@ public class Highlight : MonoBehaviour
 
     private void TriggerVibration(float lowFrequency, float highFrequency)
     {
+        // Triggers haptic feedback on the gamepad.
         if (Gamepad.current != null)
         {
-            Gamepad.current.SetMotorSpeeds(lowFrequency, highFrequency);
+            Gamepad.current.SetMotorSpeeds(lowFrequency, highFrequency);// Sets the vibration speeds.
             StartCoroutine(StopVibrationAfterDelay(0.5f));
         }
     }
 
     private IEnumerator StopVibrationAfterDelay(float delay)
     {
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(delay);// Waits for the specified delay.
         if (Gamepad.current != null)
         {
             Gamepad.current.SetMotorSpeeds(0, 0);

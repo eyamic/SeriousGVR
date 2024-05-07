@@ -9,16 +9,16 @@ using UnityEngine.UI;
 public class EnemyTalk : Action
 {
 
-    private Animator anim;
-    private GameObject player;
-    private NavMeshAgent enemyAgent;
-    private AudioSource audioSource;
-    private bool isPlayerSpeaking;
-    private bool isMyTurnToSpeak = false;
-    public GameObject TalktoYoungwomanPanel;
+    private Animator anim;  // Animator component reference to control animations.
+    private GameObject player;  // GameObject reference to the player.
+    private NavMeshAgent enemyAgent;  // NavMeshAgent component for AI pathfinding.
+    private AudioSource audioSource;  // AudioSource component to play audio.
+    private bool isPlayerSpeaking;  // Boolean to check if the player is currently speaking.
+    private bool isMyTurnToSpeak = false;  // Boolean to manage turn-taking in the conversation.
+    public GameObject TalktoYoungwomanPanel;  // UI panel that is displayed during conversations.
  //   public AudioClip[] dialogueClips; // 敌人的回答语音片段
    // private int currentClipIndex = 0;
-
+   // Called when the task is started; initializes components
     public override void OnStart()
     {
         anim = GetComponent<Animator>();
@@ -28,14 +28,14 @@ public class EnemyTalk : Action
         enemyAgent.enabled = false;
         TalktoYoungwomanPanel.SetActive(true);
     }
-
+// Called every frame while the task is active.
     public override TaskStatus OnUpdate()
     {
         CheckPlayerSpeaking();
         ManageConversation();
         return TaskStatus.Running;
     }
-
+    // Checks if the player is currently speaking by accessing the DialogueManager.
     void CheckPlayerSpeaking()
     {
         // 确保player不为空且具有DialogueManager组件
@@ -49,13 +49,13 @@ public class EnemyTalk : Action
             isPlayerSpeaking = false; // 安全默认值
         }
     }
-
+// Manages the enemy's conversation behavior based on who is currently speaking.
     void ManageConversation()
     {
-        // 确保如果有对话正在进行，不执行任何动画状态变更
+        // 确保如果有对话正在进行，不执行任何动画状态变更Ensure that no animation state changes are performed if there is a dialogue going on
         if (!isPlayerSpeaking && !audioSource.isPlaying && isMyTurnToSpeak)
         {
-            // 在此处添加敌人的其他行为，例如动画状态等
+            // 在此处添加敌人的其他行为，例如动画状态等Add other behaviours of the enemy here, e.g. animation states, etc.
             anim.SetBool("Istalk", false);
             anim.SetBool("IsWalk", true); // 假设敌人可以开始走动
             //TalktoYoungwomanPanel.SetActive(false);//No tips
@@ -70,7 +70,7 @@ public class EnemyTalk : Action
             isMyTurnToSpeak = true; // Prepare for next turn
         }
     }
-
+    // Triggered when the player enters a predefined trigger area.
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

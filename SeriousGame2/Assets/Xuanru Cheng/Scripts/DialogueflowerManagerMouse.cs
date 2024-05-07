@@ -5,48 +5,48 @@ using UnityEngine;
 
 public class DialogueflowerManagerMouse : MonoBehaviour
 {
-    public AudioSource npcAudioSource;
-    public AudioSource playerAudioSource;
-    public AudioClip[] npcflowerDialogueClips;
-    public AudioClip[] playerflowerDialogueClips;
-    private int currentflowerClipIndex = 0;
-    private bool isDialoguePlaying1 = false;
-    private bool canTriggerDialogue = false;
-    public GameObject rose;
-    public GameObject Rosepanel;
+    public AudioSource npcAudioSource; // AudioSource for playing NPC's dialogue.
+    public AudioSource playerAudioSource; // AudioSource for playing player's dialogue.
+    public AudioClip[] npcflowerDialogueClips; // Array of NPC dialogue audio clips related to the flower.
+    public AudioClip[] playerflowerDialogueClips; // Array of player dialogue audio clips related to the flower.
+    private int currentflowerClipIndex = 0; // Index to track the current dialogue clip being played.
+    private bool isDialoguePlaying1 = false; // Flag to check if the dialogue is currently playing.
+    private bool canTriggerDialogue = false; // Flag to check if dialogue can be triggered (player in range).
+    public GameObject rose; // GameObject that represents the flower in the game.
+    public GameObject Rosepanel; // UI panel that is shown when the player can interact with the flower.
 
     void Awake()
     {
-        rose.SetActive(false);
+        rose.SetActive(false);// Initially sets the rose GameObject to be inactive.
     }
 
      void Update()
-    {
+    { // Check for player input and whether dialogue can be triggered.
         if (Input.GetKeyDown(KeyCode.E) && canTriggerDialogue)
         {
             if (!isDialoguePlaying1)
             {
-                StartflowerDialogue();
+                StartflowerDialogue();// Start the dialogue if it is not currently playing.
             }
             else if (!npcAudioSource.isPlaying && !playerAudioSource.isPlaying)
             {
-                ContinueflowerDialogue();
+                ContinueflowerDialogue();// Continue to the next part of the dialogue if nothing is currently playing
             }
         }
     }
     public void StartflowerDialogue()
-        {
+        {// Start playing the dialogue related to the flower.
             if (!isDialoguePlaying1)
             {
                 currentflowerClipIndex = 0;
                 isDialoguePlaying1 = true;
                 rose.SetActive(false);
-                PlayflowerNPCDialogue();
+                PlayflowerNPCDialogue();// Start with the NPC's dialogue.
             }
         }
 
         void OnTriggerEnter(Collider other)
-        {
+        { // Trigger dialogue possibility when the player enters a specific area.
             if (other.gameObject.tag == "Flower")
             {
                 canTriggerDialogue = true;
@@ -55,7 +55,7 @@ public class DialogueflowerManagerMouse : MonoBehaviour
         }
 
         void OnTriggerExit(Collider other)
-        {
+        { // Disable dialogue interaction when the player leaves the area.
             if (other.gameObject.tag == "Flower")
             {
                 canTriggerDialogue = false;
@@ -64,7 +64,7 @@ public class DialogueflowerManagerMouse : MonoBehaviour
         }
 
         private void ContinueflowerDialogue()
-        {
+        { // Continue to the next part of the dialogue sequence.
             Debug.Log("ContinueflowerDialogue called, currentClipIndex: " + currentflowerClipIndex);
             int totalDialogues = npcflowerDialogueClips.Length + playerflowerDialogueClips.Length;
 
@@ -90,8 +90,8 @@ public class DialogueflowerManagerMouse : MonoBehaviour
         }
 
         private void PlayflowerNPCDialogue()
-        {
-            // NPC的索引应仅为0和1
+        { // Play one of the NPC's dialogues.
+            // NPC的索引应仅为0和1NPCs should be indexed to 0 and 1 only
             int npcIndex = (currentflowerClipIndex < 2) ? currentflowerClipIndex : 1;
             if (npcIndex < npcflowerDialogueClips.Length)
             {
@@ -119,7 +119,7 @@ public class DialogueflowerManagerMouse : MonoBehaviour
 
         public bool IsSpeaking1()
         {
-            return isDialoguePlaying1;
+            return isDialoguePlaying1;// Return whether dialogue is currently playing.
         }
 
         public void ResetflowerDialogue()

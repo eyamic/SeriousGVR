@@ -4,20 +4,15 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class DialogueManager : MonoBehaviour
 {
-    public AudioSource npcAudioSource;  // NPC的音频源
-   // public AudioSource npcAudioSource1;
-    public AudioSource playerAudioSource;  // 玩家的音频源
-   // public AudioSource playerAudioSource1;  // 玩家的音频源
-    public AudioClip[] npcDialogueClips;  // NPC对话片段
-  //  public AudioClip[] npcDialogueClips2;
-    public AudioClip[] playerDialogueClips;  // 玩家对话片段
-   // public AudioClip[] playerDialogueClips2;  // 玩家对话片段2
-    private int currentClipIndex = 0;
-    private bool isDialoguePlaying = false;
-    private PlayerControls controls;  // 输入系统控制类
-    public GameObject currentInteractable;  // 当前互动的对象
-    public GameObject GameoverPanel;
-    //public GameObject rose;  // 特定的物体 "rose"
+    public AudioSource npcAudioSource;  // Public AudioSource reference for the NPC's dialogue.
+    public AudioSource playerAudioSource;  // Public AudioSource reference for the player's dialogue.
+    public AudioClip[] npcDialogueClips;  // Array of AudioClips that stores the NPC's dialogue audio.
+    public AudioClip[] playerDialogueClips;  // Array of AudioClips that stores the player's dialogue audio.
+    private int currentClipIndex = 0;  // Tracks the index of the current dialogue clip being played.
+    private bool isDialoguePlaying = false;  // Flag to check if a dialogue is currently playing.
+    private PlayerControls controls;  // Reference to a custom PlayerControls class that handles input.
+    public GameObject currentInteractable;  // Reference to the currently interactable object.
+    public GameObject GameoverPanel;  // Reference to a GameObject that acts as a panel displayed at the end of the game or dialogue.
 
     void Awake()
     {
@@ -43,11 +38,11 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue()
     {
-        if (!isDialoguePlaying)
+        if (!isDialoguePlaying)  // Checks if dialogue is not already playing.
         {
-            currentClipIndex = 0;
-            isDialoguePlaying = true;
-            PlayNPCDialogue();
+            currentClipIndex = 0;  // Resets the clip index to 0.
+            isDialoguePlaying = true;  // Sets the dialogue playing flag to true.
+            PlayNPCDialogue();  // Starts the dialogue by playing the first NPC audio clip.
         }
     }
 
@@ -57,13 +52,12 @@ public class DialogueManager : MonoBehaviour
         if (isDialoguePlaying || npcAudioSource.isPlaying || playerAudioSource.isPlaying)
         {
             Debug.Log("Dialogue is currently playing or audio sources are active.");
-            return;  // 如果当前正在播放对话，忽略新的输入
+            return;  // If dialogue is already playing, ignore new input.
         }
         
-        // 检查当前互动对象的标签
         if (currentInteractable != null && currentInteractable.tag == "NPC")
         {
-            ContinueDialogue();
+            ContinueDialogue();  // If the current interactable object is an NPC, continue with the dialogue.
         }
         else
         {
@@ -99,33 +93,32 @@ public class DialogueManager : MonoBehaviour
     private void ContinueDialogue()
     {
         Debug.Log("ContinueDialogue called, currentClipIndex: " + currentClipIndex);
-        if (currentClipIndex < npcDialogueClips.Length + playerDialogueClips.Length)
+        if (currentClipIndex < npcDialogueClips.Length + playerDialogueClips.Length)  // Checks if the current index is within the bounds of the dialogue arrays.
         {
-            if (currentClipIndex % 2 == 0)
+            if (currentClipIndex % 2 == 0)  // Determines which dialogue to play based on the index.
             {
-                PlayNPCDialogue();
+                PlayNPCDialogue();  // Plays the NPC dialogue at the current index.
             }
             else
             {
-                PlayPlayerDialogue();
+                PlayPlayerDialogue();  // Plays the player dialogue at the current index.
             }
-            currentClipIndex++; // 确保此行逻辑正确执行
+            currentClipIndex++;  // Increments the clip index.
         }
         else
         {
-            isDialoguePlaying = false; // 对话结束
-            GameoverPanel.SetActive(true);
+            isDialoguePlaying = false;  // Ends the dialogue sequence.
+            GameoverPanel.SetActive(true);  // Activates the game over panel.
             Debug.Log("Dialogue ended.");
         }
     }
     private void PlayNPCDialogue()
     {
-        int npcIndex = currentClipIndex / 2;
-        Debug.Log(npcIndex);
+        int npcIndex = currentClipIndex / 2;  // Calculates the correct NPC clip index.
         if (npcIndex < npcDialogueClips.Length)
         {
-            npcAudioSource.clip = npcDialogueClips[npcIndex];
-            npcAudioSource.Play();
+            npcAudioSource.clip = npcDialogueClips[npcIndex];  // Sets the NPC audio source to the correct clip.
+            npcAudioSource.Play();  // Plays the NPC audio clip.
         }
         else
         {
@@ -135,11 +128,11 @@ public class DialogueManager : MonoBehaviour
 
     private void PlayPlayerDialogue()
     {
-        int playerIndex = (currentClipIndex - 1) / 2;
+        int playerIndex = (currentClipIndex - 1) / 2;  // Calculates the correct player clip index.
         if (playerIndex < playerDialogueClips.Length)
         {
-            playerAudioSource.clip = playerDialogueClips[playerIndex];
-            playerAudioSource.Play();
+            playerAudioSource.clip = playerDialogueClips[playerIndex];  // Sets the player audio source to the correct clip.
+            playerAudioSource.Play();  // Plays the player audio clip.
         }
         else
         {
