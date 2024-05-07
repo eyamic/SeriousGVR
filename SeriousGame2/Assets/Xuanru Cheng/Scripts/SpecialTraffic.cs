@@ -5,22 +5,23 @@ using TMPro;
 using UnityEngine.InputSystem;
 public class SpecialTraffic : MonoBehaviour
 {
-    public GameObject hintPanel; 
-    public AudioSource answerSound;
-    public AudioSource playerHint;
-    public AudioSource playerAsk;
+    public GameObject hintPanel; // A reference to the hint panel.
+    public AudioSource answerSound; // The sound that is played at the end of a dialogue.
+    public AudioSource playerHint; // Sound that prompts the player to interact.
+    public AudioSource playerAsk; // sound for player ask; // sound for player interaction.
 
-    private int triggerTime = 0;
-    private bool playerInTriffic = false;
-    private bool talkOver = false;
-    public Collider invisibleWall;
+    private int triggerTime = 0; // the number of times the interaction was triggered
+    private bool playerInTriffic = false; // Indicates if the player is in a traffic zone or not
+    private bool talkOver = false; // Flag if the dialogue is over or not
+    public Collider invisibleWall; // Invisible wall, used to block the player until the end of the dialogue
 
-    private PlayerControls controls; // 控制器
+    private PlayerControls controls; // Controllers
 
-    void Awake()
-    {
-        controls = new PlayerControls();
+   
+    void Awake() {
+        controls = new PlayerControls(); // Initialise the controls.
     }
+
 
     void OnEnable()
     {

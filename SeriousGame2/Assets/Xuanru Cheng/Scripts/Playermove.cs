@@ -6,15 +6,15 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class Playermove : MonoBehaviour
 {
-     PlayerControls controls;
+     PlayerControls controls;//Access Control
      private Vector2 move;
     // private Vector2 rotate;
      public GameObject targetObject;
      private bool isCollidingWithTarget = false;
      public Transform cameraTransform;
      public RectTransform CursorRectTransform; 
-     public float cursorDistance = 0.5f;  // 光标距物体前方的距离
-     private float raycastCooldown = 0.1f; // 每0.1秒检测一次
+     public float cursorDistance = 0.5f;  // 光标距物体前方的距离Distance of the cursor from the front of the object
+     private float raycastCooldown = 0.1f; // 每0.1秒检测一次Detection every 0.1 seconds
      private float timeSinceLastRaycast = 0.0f;
      public float detectionRadius = 1.0f;
      
@@ -45,7 +45,7 @@ public class Playermove : MonoBehaviour
          Vector3 direction = new Vector3(move.x, 0, move.y).normalized;
          Vector3 right = cameraTransform.right;
          Vector3 forward = cameraTransform.forward;
-         forward.y = 0; // 忽略摄像机在垂直方向的倾斜
+         forward.y = 0; // 忽略摄像机在垂直方向的倾斜Ignore the camera tilt in the vertical direction
          right.y = 0;
 
          Vector3 moveDirection = (forward * direction.z + right * direction.x) * Time.deltaTime * 10f;
@@ -89,9 +89,9 @@ public class Playermove : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, 100.0f))
         {
-            Debug.Log("Hit " + hit.transform.name);  // 日志输出被击中的对象名
+            Debug.Log("Hit " + hit.transform.name);  // 日志输出被击中的对象名The log outputs the name of the object that was hit
 
-            // 如果按下鼠标左键或特定按键，可以对物体进行交互
+            // 如果按下鼠标左键或特定按键，可以对物体进行交互Objects can be interacted with if the left mouse button or a specific key is pressed
             if (Input.GetMouseButtonDown(0))
             {
                 SelectObject(hit.transform.gameObject);
@@ -103,7 +103,7 @@ public class Playermove : MonoBehaviour
     
      void SelectObject(GameObject selectedObject)
      {
-         // 这里可以添加选择对象后的逻辑，例如高亮显示或显示信息
+         // 这里可以添加选择对象后的逻辑，例如高亮显示或显示信息Here you can add logic after selecting an object, such as highlighting or displaying a message
          Debug.Log("Object selected: " + selectedObject.name);
      }
 
