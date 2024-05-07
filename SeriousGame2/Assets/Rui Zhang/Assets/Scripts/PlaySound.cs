@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PlaySound : MonoBehaviour
 {
-    public AudioSource audio;
+    public AudioSource audio1;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            audio.PlayDelayed(0.5f);
+            audio1.PlayDelayed(0.5f);
         }
     }
 }
