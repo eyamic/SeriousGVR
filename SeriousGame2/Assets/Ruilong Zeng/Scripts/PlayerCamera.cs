@@ -5,43 +5,48 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
-    public float SensX = 400;
-    public float SensY = 400;
+    public float SensX = 400; // Sensitivity for horizontal rotation
+    public float SensY = 400; // Sensitivity for vertical rotation
 
-    public Transform Orientation;
-    public Transform playerTransform;
+    public Transform Orientation; // Reference to the orientation transform
+    public Transform playerTransform; // Reference to the player's transform
 
-    private float LockXRotaion = 14f;
-    private float xRotation;
-    private float yRotation;
-    
-    public bool canRotate = true;
-    public bool canMoveDown = true;
+    private float LockXRotaion = 14f; // Locked vertical rotation angle
+    private float xRotation; // Current vertical rotation angle
+    private float yRotation; // Current horizontal rotation angle
+
+    public bool canRotate = true; // Flag to enable/disable camera rotation
+    public bool canMoveDown = true; // Flag to enable/disable downward camera movement
+
     private void Update()
     {
-        float mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * SensX;
-        float mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * SensY;
+        float mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * SensX; // Get horizontal mouse movement
+        float mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * SensY; // Get vertical mouse movement
 
-        yRotation += mouseX;
+        yRotation += mouseX; // Update horizontal rotation
         if (canMoveDown)
         {
-            xRotation -= mouseY;
-            xRotation = Mathf.Clamp(xRotation, -5f, 20f);
+            xRotation -= mouseY; // Update vertical rotation
+            xRotation = Mathf.Clamp(xRotation, -5f, 20f); // Clamp vertical rotation angle
         }
         else
         {
-            xRotation = LockXRotaion;
+            xRotation = LockXRotaion; // Lock vertical rotation angle
         }
-        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-        Orientation.rotation = Quaternion.Euler(0, yRotation, 0);
-        
-        playerTransform.rotation=Quaternion.Euler(0,yRotation,0);
+
+        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0); // Set camera rotation
+        Orientation.rotation = Quaternion.Euler(0, yRotation, 0); // Set orientation rotation
+
+        playerTransform.rotation = Quaternion.Euler(0, yRotation, 0); // Set player rotation
     }
+
+    // Method to enable/disable camera rotation
     public void SetRotationEnabled(bool enabled)
     {
         canRotate = enabled;
     }
 
+    // Method to enable/disable downward camera movement
     public void SetMoveUpDownEnabled(bool enabled)
     {
         canMoveDown = enabled;

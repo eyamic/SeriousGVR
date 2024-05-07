@@ -5,74 +5,82 @@ using UnityEngine;
 
 public class PlayerKeyboardMove : MonoBehaviour
 {
-    public float Movespeed;
-    public float GroundDrag;
+    public float MoveSpeed; // Movement speed
+    public float GroundDrag; // Ground drag coefficient
 
-    [Header("Ground Check")] 
-    public float playerHight;
-    public LayerMask WhatIsground;
-    private bool Isgroung;
+    [Header("Ground Check")] public float playerHeight; // Height of the player
+    public LayerMask WhatIsGround; // Layer mask for ground detection
+    private bool IsGrounded; // Flag indicating whether the player is grounded
 
-    public Transform orientation;
-    private float horizontaInput;
-    private float verticalInput;
-    private Vector3 moveDirection;
-    private Rigidbody rb;
-    public AudioSource[] audio;
+    public Transform orientation; // Reference to the orientation transform
+    private float horizontalInput; // Horizontal input
+    private float verticalInput; // Vertical input
+    private Vector3 moveDirection; // Movement direction
+    private Rigidbody rb; // Reference to the Rigidbody component
+    public AudioSource[] audio; // Array of audio sources
+
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.freezeRotation = true;
+        rb = GetComponent<Rigidbody>(); // Get the Rigidbody component
+        rb.freezeRotation = true; // Freeze rotation
     }
 
     private void Update()
     {
-        MyInput();
-        SpeedControl();
-        Isgroung = Physics.Raycast(transform.position, Vector3.down, playerHight * 0.5f + 0.2f, WhatIsground);
-        if (Isgroung)
+        MyInput(); // Handle player input
+        SpeedControl(); // Control movement speed
+        IsGrounded =
+            Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f,
+                WhatIsGround); // Check if the player is grounded
+        if (IsGrounded)
         {
-            rb.drag = GroundDrag;
+            rb.drag = GroundDrag; // Apply ground drag
         }
         else
         {
-            rb.drag = 0;
+            rb.drag = 0; // Remove ground drag
         }
     }
+
     private void FixedUpdate()
     {
-        Moveplayer();
+        MovePlayer(); // Move the player
     }
+
     private void MyInput()
     {
-        horizontaInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
+        horizontalInput = Input.GetAxisRaw("Horizontal"); // Get horizontal input
+        verticalInput = Input.GetAxisRaw("Vertical"); // Get vertical input
     }
-    private void Moveplayer()
-    {
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontaInput;
 
-        rb.AddForce(Movespeed * moveDirection.normalized * 10f, ForceMode.Force);
+    private void MovePlayer()
+    {
+        moveDirection =
+            orientation.forward * verticalInput + orientation.right * horizontalInput; // Calculate movement direction
+
+        rb.AddForce(MoveSpeed * moveDirection.normalized * 10f, ForceMode.Force); // Apply movement force
         if (verticalInput != 0)
         {
-            if (!audio[0].isPlaying) 
+            if (!audio[0].isPlaying)
             {
-                audio[0].Play();
+                audio[0].Play(); // Play footstep audio if moving
             }
         }
         else
         {
-            audio[0].Stop();
+            audio[0].Stop(); // Stop footstep audio if not moving
         }
     }
+
     private void SpeedControl()
     {
-        Vector3 flatV = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        Vector3 flatVelocity =
+            new Vector3(rb.velocity.x, 0f, rb.velocity.z); // Get the horizontal component of velocity
 
-        if (flatV.magnitude > Movespeed)
+        if (flatVelocity.magnitude > MoveSpeed)
         {
-            Vector3 LimitedVel = flatV.normalized * Movespeed;
-            rb.velocity = new Vector3(LimitedVel.x, rb.velocity.y, LimitedVel.z);
+            Vector3 limitedVelocity = flatVelocity.normalized * MoveSpeed; // Limit the magnitude of velocity
+            rb.velocity = new Vector3(limitedVelocity.x, rb.velocity.y, limitedVelocity.z); // Update the velocity
         }
     }
 }
