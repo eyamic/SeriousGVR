@@ -6,60 +6,70 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class MainMenutoGame : MonoBehaviour
 {
-    public GameObject Canvans;
-    public GameObject AboutCanvans;
-    public GameObject ChoseCnavas;
+    // References to UI elements and canvases
+    public GameObject Canvas;
+    public GameObject AboutCanvas;
+    public GameObject ChooseCanvas;
     public Button start;
     public Button Quit;
     public Button About;
-    public Button closeAboutCanvansButton;
-    public Button CloseChoseCanvasButton;
-    public Button keyboradButton;
-    public Button ContorllerButton;
+    public Button closeAboutCanvasButton;
+    public Button CloseChooseCanvasButton;
+    public Button keyboardButton;
+    public Button controllerButton;
 
-
+    // Start is called before the first frame update
     private void Start()
     {
+        // Assigning event listeners to buttons
         start.onClick.AddListener(StartGame);
         Quit.onClick.AddListener(QuitGame);
         About.onClick.AddListener(AboutGame);
-        closeAboutCanvansButton.onClick.AddListener(CloseAboutCanvans);
-        CloseChoseCanvasButton.onClick.AddListener(CloseChoseCanvans);
-        keyboradButton.onClick.AddListener(Keyboard);
-        ContorllerButton.onClick.AddListener(controller);
+        closeAboutCanvasButton.onClick.AddListener(CloseAboutCanvas);
+        CloseChooseCanvasButton.onClick.AddListener(CloseChooseCanvas);
+        keyboardButton.onClick.AddListener(Keyboard);
+        controllerButton.onClick.AddListener(Controller);
     }
 
+    // Method to start the game
     void StartGame()
     {
-        ChoseCnavas.SetActive(true);
+        ChooseCanvas.SetActive(true); // Activate the choose canvas
     }
 
+    // Method to quit the game
     void QuitGame()
     {
-        Application.Quit();
+        Application.Quit(); // Quit the application
     }
 
+    // Method to show information about the game
     void AboutGame()
     {
-        AboutCanvans.SetActive(true);
+        AboutCanvas.SetActive(true); // Activate the about canvas
     }
 
+    // Method to load the game scene with keyboard controls
     void Keyboard()
     {
-        SceneManager.LoadScene("Total4_Rui");
+        SceneManager.LoadScene("Total4_Rui"); // Load the scene with keyboard controls
     }
 
-    void controller()
+    // Method to load the game scene with controller controls
+    void Controller()
     {
-        SceneManager.LoadScene("Total5");
+        SceneManager.LoadScene("Total5"); // Load the scene with controller controls
     }
 
-    void CloseAboutCanvans()
+    // Method to close the about canvas
+    void CloseAboutCanvas()
     {
-        AboutCanvans.SetActive(false);
+        AboutCanvas.SetActive(false); // Deactivate the about canvas
     }
-    void CloseChoseCanvans()
+
+    // Method to close the choose canvas
+    void CloseChooseCanvas()
     {
-        ChoseCnavas.SetActive(false);
+        ChooseCanvas.SetActive(false); // Deactivate the choose canvas
     }
 }
